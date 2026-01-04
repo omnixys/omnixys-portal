@@ -91,19 +91,6 @@ export default function GlobalErrorShell({
   };
 
   return (
-    //   <body
-    //     style={{
-    //       margin: 0,
-    //       minHeight: "100vh",
-    //       display: "flex",
-    //       alignItems: "center",
-    //       justifyContent: "center",
-    //       background: isDark
-    //         ? `radial-gradient(circle at top, #0B0B0E, ${omni.backgroundDefault})`
-    //         : `radial-gradient(circle at top, ${omni.backgroundDefault}, #E9ECF2)`,
-    //       color: omni.textPrimary,
-    //     }}
-    //   >
         <main
           ref={cardRef}
           style={{
