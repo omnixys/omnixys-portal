@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
     serverActions: {
       allowedOrigins: ["*"],
     },
-   globalNotFound: true,
+  //  globalNotFound: true,
   },
 };
 
