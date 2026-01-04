@@ -2,7 +2,7 @@
 
 import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { omnixysPresets } from "@/themes/theme";
-import { ERROR_CONFIG, ErrorCode } from "@/app/_config/error-config";
+import { ERROR_CONFIG, ErrorCode } from "../_config/error-config";
 
 type Props = {
   code: ErrorCode;
