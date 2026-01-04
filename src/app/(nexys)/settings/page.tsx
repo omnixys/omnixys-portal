@@ -2,9 +2,9 @@
 'use client';
 
 import { useSettings } from '@/context/SettingsContext';
-import { useColorMode } from '@/theme/ColorModeContext';
-import { useColorScheme } from '@/theme/ColorSchemeContext';
-import { OmnixysColorScheme } from '@/theme/theme';
+import { useColorMode } from '@/themes/ColorModeContext';
+import { useColorScheme } from '@/themes/ColorSchemeContext';
+import { OmnixysColorScheme } from "@/themes/[ORIGINAL]theme";
 import {
   Box,
   Button,

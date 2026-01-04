@@ -4,7 +4,7 @@ import { Capacitor } from "@capacitor/core";
 import { Box, Card, CardActions, CardContent, Typography } from "@mui/material";
 import { useState } from "react";
 
-import { ScanResult } from "@/components/types/scan/scan.type";
+import { ScanResult } from "@/types/scan/scan.type";
 import { getDeviceHash } from "@/utils/device-hash";
 import { playScanFeedback } from "@/utils/scan-feedback";
 import { useScanTicket } from "./hooks/useScanTicket";

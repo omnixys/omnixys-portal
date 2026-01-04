@@ -1,6 +1,6 @@
 "use client";
 
-import { Seat } from "@/components/types/seat/seat.type";
+import { Seat } from "@/types/seat/seat.type";
 import {
   alpha,
   Button,

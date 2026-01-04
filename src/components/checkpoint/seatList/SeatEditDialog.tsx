@@ -11,9 +11,9 @@ import {
 } from "@mui/material";
 import React from "react";
 
-import { Invitation } from "@/components/types/invitation/invitation.type";
-import { Seat } from "@/components/types/seat/seat.type";
-import { User } from "@/components/types/user/user.type";
+import { Invitation } from "@/types/invitation/invitation.type";
+import { Seat } from "@/types/seat/seat.type";
+import { User } from "@/types/user/user.type";
 
 export default function SeatEditDialog({
   open,

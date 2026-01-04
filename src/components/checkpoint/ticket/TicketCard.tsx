@@ -14,28 +14,25 @@ import { AnimatePresence, motion } from "framer-motion";
 import { QRCodeCanvas } from "qrcode.react";
 import { useState } from "react";
 
-import {
-  CREATE_TOKEN,
-  ROTATE_TOKEN,
-} from "@/components/graphql/ticket/ticket.mutation";
-import { GET_TICKET_BY_ID_2 } from "@/components/graphql/ticket/ticket.query";
+import { CREATE_TOKEN, ROTATE_TOKEN } from "@/graphql/ticket/ticket.mutation";
+import { GET_TICKET_BY_ID_2 } from "@/graphql/ticket/ticket.query";
 import {
   CreateTokenRequest,
   CreateTokenResult,
-} from "@/components/types/ticket/ticket-graphql-mutation.type";
+} from "@/types/ticket/ticket-graphql-mutation.type";
 import {
   GetTicketById2Request,
   GetTicketById2Result,
-} from "@/components/types/ticket/ticket-graphql-query.type";
+} from "@/types/ticket/ticket-graphql-query.type";
 import { getDeviceHash } from "@/utils/device-hash";
-import ActivateTicketButton from "../../myQr/ActivateTicketButton";
-import { hapticRotate } from "../../myQr/haptics";
-import { qrBeatAnimation } from "../../myQr/qr-beat";
-import QrCountdownRings from "../../myQr/QrCountdownRings";
-import QrRingLegend from "../../myQr/QrRingLegend";
-import { useAutoRotateQr } from "../../myQr/useAutoRotateQr";
-import { useCriticalPhaseHaptic } from "../../myQr/useCriticalPhaseHaptic";
-import { useQrActiveState } from "../../myQr/useQrActiveState";
+import ActivateTicketButton from "@/components/checkpoint/myQr/ActivateTicketButton";
+import { hapticRotate } from "@/components/checkpoint/myQr/haptics";
+import { qrBeatAnimation } from "@/components/checkpoint/myQr/qr-beat";
+import QrCountdownRings from "@/components/checkpoint/myQr/QrCountdownRings";
+import QrRingLegend from "@/components/checkpoint/myQr/QrRingLegend";
+import { useAutoRotateQr } from "@/components/checkpoint/myQr/useAutoRotateQr";
+import { useCriticalPhaseHaptic } from "@/components/checkpoint/myQr/useCriticalPhaseHaptic";
+import { useQrActiveState } from "@/components/checkpoint/myQr/useQrActiveState";
 import TicketCardSkeleton from "./TicketCardSkeleton";
 
 const RING_SIZE = 360;

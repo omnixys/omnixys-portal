@@ -1,7 +1,7 @@
 "use client";
 
-import { ScanResult } from "@/components/types/scan/scan.type";
 import { useActiveEvent } from "@/providers/ActiveEventProvider";
+import { ScanResult } from "@/types/scan/scan.type";
 import { Box, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import jsQR from "jsqr";

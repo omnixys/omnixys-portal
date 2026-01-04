@@ -3,7 +3,7 @@
 import { Box, Typography } from "@mui/material";
 
 // Premium Modules
-import { Event } from "@/components/types/event/event.type";
+import { Event } from "@/types/event/event.type";
 import EventDescriptionEditor from "./EventDescriptionEditor";
 import EventDetailsAccordion from "./EventDetailsAccordion";
 import EventLocationMap from "./EventLocationMap";

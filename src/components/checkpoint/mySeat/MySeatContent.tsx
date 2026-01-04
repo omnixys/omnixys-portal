@@ -13,11 +13,11 @@ import { GET_MY_TICKETS } from "@/graphql/ticket/ticket.query";
 
 import { GetMyTicketsResult } from "@/types/ticket/ticket-graphql-query.type";
 
-import { Ticket } from "@/components/types/ticket/ticket.type";
 import {
   GetSeatByIdRequest,
   GetSeatByIdResult,
 } from "@/types/seat/seat-query-graphql.type";
+import { Ticket } from "@/types/ticket/ticket.type";
 
 /**
  * Displays seat information for the current guest

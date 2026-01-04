@@ -21,26 +21,26 @@ import {
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
 
-import SeatRenameConflictDialog from "@/components/../../../components/seatList/dialogs/SeatRenameConflictDialog";
-import { useSeats } from "@/components/../../../components/seatList/useSeats";
+import SeatRenameConflictDialog from "@/components/checkpoint/seatList/dialogs/SeatRenameConflictDialog";
+import { useSeats } from "@/components/checkpoint/seatList/useSeats";
 
 import {
   BULK_RENAME_SECTIONS,
   BULK_RENAME_TABLES,
-} from "@/components/../../../graphql/seat/seat-mutation.graphql";
+} from "@/graphql/seat/seat-mutation.graphql";
 
 import {
   BulkRenameSectionsRequest,
   BulkRenameSectionsResult,
   BulkRenameTablesRequest,
   BulkRenameTablesResult,
-} from "@/components/../../../types/seat/seat-mutation-graphql.type";
+} from "@/types/seat/seat-mutation-graphql.type";
 
 import {
   RenameSectionInput,
   RenameTableInput,
-} from "@/components/../../../types/seat/seat-input.type";
-import { RenameConflict } from "@/components/../../../types/seat/seat.type";
+} from "@/types/seat/seat-input.type";
+import { RenameConflict } from "@/types/seat/seat.type";
 
 /* ---------------------------------------------
  * TYPES

@@ -6,11 +6,11 @@ import { IconButton, Stack } from "@mui/material";
 import { useParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Layer, Stage } from "react-konva";
-import { canvasStore } from "../../edit/canvasStore";
-import InspectorPanel from "../../edit/InspectorPanel";
-import { useLayoutActions } from "../../edit/layoutActions2";
-import { applyDiffToState } from "../../edit/patchEngine";
-import { useLayoutDiff } from "../../edit/useLayoutDiff";
+import { canvasStore } from "@/app/checkpoint/event/[id]/block3/components/edit/canvasStore";
+import InspectorPanel from "@/app/checkpoint/event/[id]/block3/components/edit/InspectorPanel";
+import { useLayoutActions } from "@/app/checkpoint/event/[id]/block3/components/edit/layoutActions2";
+import { applyDiffToState } from "@/app/checkpoint/event/[id]/block3/components/edit/patchEngine";
+import { useLayoutDiff } from "@/app/checkpoint/event/[id]/block3/components/edit/useLayoutDiff";
 import SectionLayer from "./SectionLayer";
 
 export default function CanvasStage({ sections: initialSections }) {

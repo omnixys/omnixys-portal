@@ -5,7 +5,7 @@ import { alpha, Box, Stack, Typography, useTheme } from "@mui/material";
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
 
-import { Event } from "@/components/types/event/event.type";
+import { Event } from "@/types/event/event.type";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import DescriptionIcon from "@mui/icons-material/Description";
 import PlaceIcon from "@mui/icons-material/Place";

@@ -1,6 +1,6 @@
 "use client";
 
-import { ScanResult } from "@/components/types/scan/scan.type";
+import { ScanResult } from "@/types/scan/scan.type";
 import { Box, Chip, Stack, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 

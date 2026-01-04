@@ -1,18 +1,26 @@
 "use client";
 
 import { Inter } from "next/font/google";
-import GlobalErrorShell from "./_components/GlobalErrorShell";
+import dynamic from "next/dynamic";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const GlobalErrorShell = dynamic(
+  () => import("./_components/GlobalErrorShell"),
+  { ssr: false }
+);
+
 
 export default function Unauthorized() {
   return (
     <html lang="en" className={inter.className}>
-      <GlobalErrorShell
-        code={401}
-        title="Unauthorized"
-        description="You are not authenticated to access this resource."
-      />
+      <body>
+        <GlobalErrorShell
+          code={401}
+          title="Unauthorized"
+          description="You are not authenticated to access this resource."
+        />
+      </body>
     </html>
   );
 }

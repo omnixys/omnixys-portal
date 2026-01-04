@@ -1,7 +1,7 @@
 "use client";
 
-import { Event } from "@/components/types/event/event.type";
 import { EventRole } from "@/types/event/event-enum.type";
+import { Event } from "@/types/event/event.type";
 import { alpha, Box, Chip, Stack, Typography, useTheme } from "@mui/material";
 
 type Props = {

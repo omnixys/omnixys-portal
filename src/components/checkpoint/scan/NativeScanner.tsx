@@ -5,8 +5,8 @@ import { useCallback, useState } from "react";
 
 import { Haptics, ImpactStyle } from "@capacitor/haptics";
 
-import { ScanResult } from "@/components/types/scan/scan.type";
 import { useActiveEvent } from "@/providers/ActiveEventProvider";
+import { ScanResult } from "@/types/scan/scan.type";
 import { getDeviceHash } from "@/utils/device-hash";
 import { getLogger } from "@/utils/logger";
 import { playScanFeedback } from "@/utils/scan-feedback";

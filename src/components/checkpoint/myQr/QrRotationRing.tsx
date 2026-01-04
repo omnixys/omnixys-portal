@@ -1,6 +1,6 @@
 "use client";
 
-import { Ticket } from "@/components/types/ticket/ticket.type";
+import { Ticket } from "@/types/ticket/ticket.type";
 import { Box, Typography } from "@mui/material";
 import { useEffect, useMemo, useState } from "react";
 

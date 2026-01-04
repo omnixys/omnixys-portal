@@ -1,16 +1,15 @@
 "use client";
 
-import { AppleNavBar } from "@/components/apple/AppleNavBar";
+import { AppleNavBar } from "@/components/checkpoint/apple/AppleNavBar";
 import { Alert, Box, Snackbar, Stack } from "@mui/material";
 import { JSX, useState } from "react";
 
-import { SlideTransition } from "@/components/(authentication)/register/SlideTransition";
-import { AppleProgress } from "@/components/../components/newEvent/EventSteps.style";
-import Step1Basics from "@/components/../components/newEvent/Step1Basics";
-import Step2Time from "@/components/../components/newEvent/Step2Time";
-import Step3Advanced from "@/components/../components/newEvent/Step3Advanced";
-import Step4Summary from "@/components/../components/newEvent/Step4Summary";
-import Step5Success from "@/components/../components/newEvent/Step5Success";
+import { AppleProgress } from "@/components/checkpoint/newEvent/EventSteps.style";
+import Step1Basics from "@/components/checkpoint/newEvent/Step1Basics";
+import Step2Time from "@/components/checkpoint/newEvent/Step2Time";
+import Step3Advanced from "@/components/checkpoint/newEvent/Step3Advanced";
+import Step4Summary from "@/components/checkpoint/newEvent/Step4Summary";
+import Step5Success from "@/components/checkpoint/newEvent/Step5Success";
 import { CREATE_EVENT } from "@/components/../graphql/event/event-mutation.graphql";
 import {
   CreateEventRequest,
@@ -18,6 +17,7 @@ import {
 } from "@/components/../types/event/event-mutation-graphql.type";
 import { useMutation } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
+import { SlideTransition } from "@/app/checkpoint/(authentication)/register/SlideTransition";
 
 export default function CreateEventPage(): JSX.Element {
   const router = useRouter();

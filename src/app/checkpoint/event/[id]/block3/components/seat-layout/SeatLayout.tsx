@@ -1,4 +1,4 @@
-import { LayoutActionsProvider } from "../../edit/layoutActions2";
+import { LayoutActionsProvider } from "@/app/checkpoint/event/[id]/block3/components/edit/layoutActions2";
 import CanvasStage from "./CanvasStage";
 
 export default function SeatLayout({ layout }) {

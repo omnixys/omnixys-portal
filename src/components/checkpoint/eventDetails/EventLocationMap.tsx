@@ -1,6 +1,6 @@
 "use client";
 
-import { Event } from "@/components/types/event/event.type";
+import { Event } from "@/types/event/event.type";
 import { Box, Typography } from "@mui/material";
 
 type Props = {

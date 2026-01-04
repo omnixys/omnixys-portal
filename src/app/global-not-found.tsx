@@ -1,5 +1,3 @@
-"use client";
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import GlobalErrorShell from "./_components/GlobalErrorShell";
@@ -14,11 +12,13 @@ export const metadata: Metadata = {
 export default function GlobalNotFound() {
   return (
     <html lang="en" className={inter.className}>
-      <GlobalErrorShell
-        code={404}
-        title="Page not found"
-        description="The page you’re trying to reach doesn’t exist or has been moved."
-      />
+      <body>
+        <GlobalErrorShell
+          code={404}
+          title="Page not found"
+          description="The page you’re trying to reach doesn’t exist."
+        />
+      </body>
     </html>
   );
 }
