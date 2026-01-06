@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { ReactNode } from "react";
 import Providers from "@/providers/Provider";
 import "@/app/globals.css";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="de" className={inter.variable}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <SpeedInsights />
         {/* <StartupVisionPro /> */}
         <Providers>{children}</Providers>
       </body>

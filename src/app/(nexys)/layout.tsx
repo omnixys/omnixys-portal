@@ -17,6 +17,7 @@ import {
 } from '@/themes/ColorSchemeContext';
 import SettingsGate from '@/app/(nexys)/settings/SettingsGate';
 import themeFactory from '@/themes/[ORIGINAL]theme';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -66,6 +67,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <SpeedInsights />
         <SessionProvider>
           <Providers>{children}</Providers>
         </SessionProvider>
