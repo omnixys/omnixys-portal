@@ -6,8 +6,9 @@ import {
   InMemoryCache,
   Observable,
 } from "@apollo/client";
+import { getResetToken } from "../../app/checkpoint/(authentication)/password-reset/SecurityQuestionStep";
 
-export function createHttpApolloClient(token?: string) {
+export function createHttpApolloClient(token1?: string) {
   const logger = getLogger("createHttpApolloClient");
   const httpUrl = process.env.NEXT_PUBLIC_BACKEND_SERVER_URL!;
 
@@ -15,6 +16,7 @@ export function createHttpApolloClient(token?: string) {
   const authLink = new ApolloLink((operation, forward) => {
     const oldHeaders = operation.getContext().headers || {};
 
+     const token = getResetToken();
     const headers = {
       ...oldHeaders,
       ...(token ? { Authorization: `Bearer ${token}` } : {}),

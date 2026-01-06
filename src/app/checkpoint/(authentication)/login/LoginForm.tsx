@@ -120,7 +120,7 @@ export default function LoginForm(): JSX.Element {
               fontSize: "0.85rem",
               mt: -2,
             }}
-            onClick={() => (window.location.href = "/password-reset")}
+            onClick={() => (window.location.href = "/checkpoint/forgot-password")}
           >
             Passwort vergessen?
           </Button>
