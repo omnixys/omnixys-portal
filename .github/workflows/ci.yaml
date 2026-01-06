@@ -60,7 +60,6 @@ env:
   SERVICE: ${{ secrets.SERVICE }}
   PORT: ${{ secrets.PORT }}
   GRAPHQL_PLAYGROUND: ${{ secrets.GRAPHQL_PLAYGROUND }}
-  NODE_ENV: ${{ secrets.NODE_ENV }}
   HTTPS: ${{ secrets.HTTPS }}
 
   LOG_LEVEL: ${{ secrets.LOG_LEVEL }}
@@ -124,6 +123,8 @@ jobs:
 
       - name: 🧱 Build project
         run: pnpm build
+        env:
+          NODE_ENV: production
 
       # - name: 🧪 Run tests
       #   run: pnpm t
