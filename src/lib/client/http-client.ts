@@ -31,7 +31,7 @@ export function createHttpApolloClient(token?: string) {
       const sub = forward(operation).subscribe({
         next: (value) => observer.next(value),
         error: (err) => {
-          console.error("[GraphQL Error]", err);
+          logger.error("[GraphQL Error]", err);
           observer.error(err);
         },
         complete: () => observer.complete(),
@@ -43,11 +43,11 @@ export function createHttpApolloClient(token?: string) {
 
   // 3. Human-readable Network Logger
   const loggerLink = new ApolloLink((operation, forward) => {
-    console.debug("[HTTP] →", operation.operationName, operation.variables);
+    logger.debug("[HTTP] →", operation.operationName, operation.variables);
     return new Observable((observer) => {
       const sub = forward(operation).subscribe({
         next: (value) => {
-          console.debug("[HTTP] ←", operation.operationName, value);
+          logger.debug("[HTTP] ←", operation.operationName, value);
 
           observer.next(value);
         },

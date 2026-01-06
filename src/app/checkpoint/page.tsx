@@ -118,7 +118,7 @@ export default function HomePage(): JSX.Element {
     role === "GUEST"
       ? {
           label: "Meine Tickets",
-          href: "/my-qr",
+          href: "/checkpoint/my-qr",
           icon: <ConfirmationNumberIcon />,
         }
       : null;

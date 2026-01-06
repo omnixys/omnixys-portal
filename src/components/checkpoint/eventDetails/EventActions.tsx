@@ -31,7 +31,7 @@ export default function EventActions({ ev }: EventHeaderProps) {
             fullWidth
             variant="contained"
             component={Link}
-            href={`/my-qr?eventId=${ev.id}`}
+            href={`/checkpoint/my-qr?eventId=${ev.id}`}
             sx={{ borderRadius: 3, fontWeight: 600 }}
           >
             My Ticket (QR)
