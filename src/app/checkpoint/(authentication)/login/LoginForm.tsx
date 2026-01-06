@@ -140,7 +140,7 @@ export default function LoginForm(): JSX.Element {
           <AppleButton
             fullWidth
             variant="ghost"
-            onClick={() => (window.location.href = "/")}
+            onClick={() => (window.location.href = "/checkpoint")}
           >
             Zurück zur Startseite
           </AppleButton>

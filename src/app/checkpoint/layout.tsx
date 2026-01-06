@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import Providers from "@/providers/Provider";
 import "@/app/globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="de" className={inter.variable}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <SpeedInsights />
+        <Analytics />
         {/* <StartupVisionPro /> */}
         <Providers>{children}</Providers>
       </body>
