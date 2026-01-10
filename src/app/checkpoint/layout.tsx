@@ -5,6 +5,7 @@ import Providers from "@/providers/Provider";
 import "@/app/globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import StartupVisionPro from "../../components/checkpoint/startup/StartupVisionPro";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,7 +43,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <SpeedInsights />
         <Analytics />
-        {/* <StartupVisionPro /> */}
+       <StartupVisionPro /> 
         <Providers>{children}</Providers>
       </body>
     </html>

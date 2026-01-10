@@ -8,7 +8,7 @@ const sections = [
   { id: 'kpis', label: 'KPIs' },
   { id: 'progress', label: 'Fortschritt' },
   { id: 'badges', label: 'Badges' },
-  { id: 'progress', label: 'Fortschritt' },
+  // { id: 'progress', label: 'Fortschritt' },
   { id: 'timeline', label: 'Features' },
   { id: 'vergleich', label: 'Vergleich' },
   { id: 'newsletter', label: 'Newsletter' },

@@ -45,6 +45,7 @@ import { useColorScheme } from '@/themes/ColorSchemeContext';
 import { OmnixysColorScheme } from '@/themes/theme';
 import { formatTime } from '@/utils/counter-format.util';
 import Logout from './Logout';
+import { usePathname } from 'next/navigation';
 
 const colorSchemeLabels: Record<OmnixysColorScheme, string> = {
   original: 'Original (Lila)',
@@ -72,6 +73,8 @@ function HideOnScroll({ children }: { children: React.ReactElement }) {
 }
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   const theme = useTheme();
   const { mode, toggleColorMode } = useColorMode();
   const { scheme: currentScheme, setScheme: setCurrentScheme } =
@@ -90,6 +93,11 @@ export default function Navbar() {
   const toggleDrawer = () => setDrawerOpen((prev) => !prev);
 
   const open = Boolean(anchorEl);
+
+  const isActive = (href: string): boolean => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
 
   const handleAvatarClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -119,6 +127,8 @@ export default function Navbar() {
     }
   }, [session]);
 
+  const isDisabled = true;
+
   return (
     <HideOnScroll>
       <AppBar
@@ -131,11 +141,11 @@ export default function Navbar() {
         }}
       >
         {/* <Divider sx={{ color: theme.palette.primary.light }} /> */}
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
           <Box display="flex" alignItems="center">
             <Link href="/">
               <Image
-                src="/omnixys-symbol.png"
+                src="/omnixys.png"
                 alt="Omnixys Logo"
                 width={40}
                 height={40}
@@ -146,14 +156,14 @@ export default function Navbar() {
               component={Link}
               href="/"
               color="inherit"
-              sx={{ ml: 1, textDecoration: 'none' }}
+              sx={{ ml: 1, textDecoration: "none" }}
             >
               Omnixys
             </Typography>
           </Box>
 
           {/* RESPONSIVE */}
-          {useMediaQuery(theme.breakpoints.down('sm')) ? (
+          {useMediaQuery(theme.breakpoints.down("sm")) ? (
             <>
               <IconButton color="inherit" onClick={toggleDrawer}>
                 <MenuIcon />
@@ -161,23 +171,88 @@ export default function Navbar() {
               <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer}>
                 <Box width={260} p={2}>
                   <List>
-                    <ListItemButton component={Link} href="/">
+                    <ListItemButton
+                      component={Link}
+                      href="/checkpoint"
+                      selected={isActive("/checkpoint")}
+                      sx={{
+                        "&.Mui-selected": {
+                          backgroundColor: theme.palette.action.selected,
+                          fontWeight: 600,
+                        },
+                      }}
+                    >
+                      <ListItemText primary="Checkpoint" />
+                    </ListItemButton>
+
+                    <ListItemButton
+                      component={Link}
+                      href="/"
+                      selected={isActive("/")}
+                      sx={{
+                        "&.Mui-selected": {
+                          backgroundColor: theme.palette.action.selected,
+                          fontWeight: 600,
+                        },
+                      }}
+                    >
                       <ListItemText primary="Home" />
                     </ListItemButton>
-                    <ListItemButton component={Link} href="/shop">
+                    <ListItemButton
+                      component={Link}
+                      href="/shop"
+                      disabled
+                      selected={isActive("/shop")}
+                      sx={{
+                        "&.Mui-selected": {
+                          backgroundColor: theme.palette.action.selected,
+                          fontWeight: 600,
+                        },
+                      }}
+                    >
                       <ListItemText primary="shop" />
                     </ListItemButton>
                     {isLoggedIn && (
-                      <ListItemButton component={Link} href="/dashboard">
+                      <ListItemButton
+                        component={Link}
+                        href="/dashboard"
+                        selected={isActive("/dashboard")}
+                        sx={{
+                          "&.Mui-selected": {
+                            backgroundColor: theme.palette.action.selected,
+                            fontWeight: 600,
+                          },
+                        }}
+                      >
                         <ListItemText primary="Dashboard" />
                       </ListItemButton>
                     )}
                     {isAdmin && (
                       <>
-                        <ListItemButton component={Link} href="/admin">
+                        <ListItemButton
+                          component={Link}
+                          href="/admin"
+                          selected={isActive("/admin")}
+                          sx={{
+                            "&.Mui-selected": {
+                              backgroundColor: theme.palette.action.selected,
+                              fontWeight: 600,
+                            },
+                          }}
+                        >
                           <ListItemText primary="Admin" />
                         </ListItemButton>
-                        <ListItemButton component={Link} href="/analytics">
+                        <ListItemButton
+                          component={Link}
+                          href="/analytics"
+                          selected={isActive("/analytics")}
+                          sx={{
+                            "&.Mui-selected": {
+                              backgroundColor: theme.palette.action.selected,
+                              fontWeight: 600,
+                            },
+                          }}
+                        >
                           <ListItemText primary="Analytics" />
                         </ListItemButton>
                       </>
@@ -185,7 +260,7 @@ export default function Navbar() {
                     <Divider />
                     <ListItemButton onClick={toggleColorMode}>
                       <ListItemIcon>
-                        {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+                        {mode === "dark" ? <Brightness7 /> : <Brightness4 />}
                       </ListItemIcon>
                       <ListItemText primary="Theme wechseln" />
                     </ListItemButton>
@@ -222,7 +297,7 @@ export default function Navbar() {
                               </ListItemIcon>
                               <ListItemText primary={label} />
                             </ListItemButton>
-                          ),
+                          )
                         )}
                         <Divider />
                         <ListItem>
@@ -242,51 +317,161 @@ export default function Navbar() {
           ) : (
             // Desktop:
             <Stack direction="row" spacing={2} alignItems="center">
-              <Button color="inherit" component={Link} href="/">
+              <Button
+                color="inherit"
+                component={Link}
+                href="/checkpoint"
+                sx={{
+                  fontWeight: isActive("/checkpoint") ? 700 : 400,
+                  borderBottom: isActive("/checkpoint") ? "2px solid" : "none",
+                  borderColor: isActive("/checkpoint") ? "blue" : "white",
+                  borderRadius: 0,
+                  opacity: isActive("/checkpoint") ? 1 : 0.85,
+                }}
+              >
+                Checkpoint
+              </Button>
+              <Button
+                color="inherit"
+                component={Link}
+                href="/"
+                sx={{
+                  fontWeight: isActive("/") ? 700 : 400,
+                  borderBottom: isActive("/") ? "2px solid" : "none",
+                  borderColor: "white",
+                  borderRadius: 0,
+                  opacity: isActive("/") ? 1 : 0.85,
+                }}
+              >
                 Home
               </Button>
-              <Button color="inherit" component={Link} href="/profile/feed">
+              <Button
+                disabled={isDisabled}
+                color="inherit"
+                component={Link}
+                href="/profile/feed"
+                sx={{
+                  fontWeight: isActive("/profile/feed") ? 700 : 400,
+                  borderBottom: isActive("/profile/feed")
+                    ? "2px solid"
+                    : "none",
+                  borderColor: "white",
+                  borderRadius: 0,
+                  opacity: isActive("/profile/feed") ? 1 : 0.85,
+                }}
+              >
                 Feed
               </Button>
-              <Button color="inherit" component={Link} href="/shop">
+              <Button
+                disabled={isDisabled}
+                color="inherit"
+                component={Link}
+                href="/shop"
+                sx={{
+                  fontWeight: isActive("/shop") ? 700 : 400,
+                  borderBottom: isActive("/shop") ? "2px solid" : "none",
+                  borderColor: "white",
+                  borderRadius: 0,
+                  opacity: isActive("/shop") ? 1 : 0.85,
+                }}
+              >
                 shop
               </Button>
-              <Button color="inherit" component={Link} href="/entertainment">
+              <Button
+                disabled={isDisabled}
+                color="inherit"
+                component={Link}
+                href="/entertainment"
+                sx={{
+                  fontWeight: isActive("/entertainment") ? 700 : 400,
+                  borderBottom: isActive("/entertainment")
+                    ? "2px solid"
+                    : "none",
+                  borderColor: "white",
+                  borderRadius: 0,
+                  opacity: isActive("/entertainment") ? 1 : 0.85,
+                }}
+              >
                 Entertainment
               </Button>
               {/* auktion, reise */}
               {isLoggedIn && (
-                <Button color="inherit" component={Link} href="/dashboard">
+                <Button
+                  color="inherit"
+                  component={Link}
+                  href="/dashboard"
+                  sx={{
+                    fontWeight: isActive("/dashboard") ? 700 : 400,
+                    borderBottom: isActive("/dashboard") ? "2px solid" : "none",
+                    borderColor: "white",
+                    borderRadius: 0,
+                    opacity: isActive("/dashboard") ? 1 : 0.85,
+                  }}
+                >
                   Dashboard
                 </Button>
               )}
               {isAdmin && (
-                <Button color="inherit" component={Link} href="/admin">
+                <Button
+                  color="inherit"
+                  component={Link}
+                  href="/admin"
+                  sx={{
+                    fontWeight: isActive("/admin") ? 700 : 400,
+                    borderBottom: isActive("/admin") ? "2px solid" : "none",
+                    borderColor: "white",
+                    borderRadius: 0,
+                    opacity: isActive("/admin") ? 1 : 0.85,
+                  }}
+                >
                   Admin
                 </Button>
               )}
               {isAdmin && (
-                <Button color="inherit" component={Link} href="/analytics">
+                <Button
+                  color="inherit"
+                  component={Link}
+                  href="/analytics"
+                  sx={{
+                    fontWeight: isActive("/analytics") ? 700 : 400,
+                    borderBottom: isActive("/analytics") ? "2px solid" : "none",
+                    borderColor: "white",
+                    borderRadius: 0,
+                    opacity: isActive("/analytics") ? 1 : 0.85,
+                  }}
+                >
                   Analytics
                 </Button>
               )}
-              <Button color="inherit" component={Link} href="/finanzen">
+              <Button
+                disabled={isDisabled}
+                color="inherit"
+                component={Link}
+                href="/finanzen"
+                sx={{
+                  fontWeight: isActive("/finanzen") ? 700 : 400,
+                  borderBottom: isActive("/finanzen") ? "2px solid" : "none",
+                  borderColor: "white",
+                  borderRadius: 0,
+                  opacity: isActive("/finanzen") ? 1 : 0.85,
+                }}
+              >
                 Finanzen
               </Button>
 
               <Tooltip
-                title={mode === 'dark' ? 'Helles Design' : 'Dunkles Design'}
+                title={mode === "dark" ? "Helles Design" : "Dunkles Design"}
                 arrow
                 placement="bottom"
               >
                 <IconButton color="inherit" onClick={toggleColorMode}>
-                  {mode === 'dark' ? <Brightness7 /> : <Brightness4 />}
+                  {mode === "dark" ? <Brightness7 /> : <Brightness4 />}
                 </IconButton>
               </Tooltip>
 
               {isLoggedIn ? (
                 <>
-                  <Tooltip title={session?.user.username || 'Profil'}>
+                  <Tooltip title={session?.user.username || "Profil"}>
                     <IconButton
                       onClick={handleAvatarClick}
                       size="small"
@@ -312,7 +497,7 @@ export default function Navbar() {
                   >
                     <MenuItem disabled>
                       <Typography variant="body2" color="text.secondary">
-                        {session?.user.email || 'Nutzer'}
+                        {session?.user.email || "Nutzer"}
                       </Typography>
                     </MenuItem>
                     <Divider />
@@ -321,8 +506,8 @@ export default function Navbar() {
                       href="/profile"
                       sx={{
                         borderRadius: 1,
-                        transition: 'background-color 0.2s ease',
-                        '&:hover': {
+                        transition: "background-color 0.2s ease",
+                        "&:hover": {
                           backgroundColor: theme.palette.action.hover,
                         },
                       }}
@@ -333,15 +518,15 @@ export default function Navbar() {
                     <MenuItem
                       sx={{
                         borderRadius: 1,
-                        transition: 'background-color 0.2s ease',
-                        '&:hover': {
+                        transition: "background-color 0.2s ease",
+                        "&:hover": {
                           backgroundColor: theme.palette.action.hover,
                         },
                       }}
                     >
                       <Timer sx={{ mr: 1 }} />
-                      Token:{' '}
-                      {remainingTime ? formatTime(remainingTime) : 'Abgelaufen'}
+                      Token:{" "}
+                      {remainingTime ? formatTime(remainingTime) : "Abgelaufen"}
                     </MenuItem>
                     <MenuItem onClick={handleRefreshToken}>
                       <Refresh sx={{ mr: 1 }} />
@@ -361,14 +546,14 @@ export default function Navbar() {
                         }
                         sx={{
                           transition:
-                            'background-color 0.2s ease, transform 0.3s ease',
-                          '&.Mui-selected': {
+                            "background-color 0.2s ease, transform 0.3s ease",
+                          "&.Mui-selected": {
                             backgroundColor: theme.palette.action.selected,
-                            transform: 'scale(1.05)',
+                            transform: "scale(1.05)",
                           },
-                          '&:hover': {
+                          "&:hover": {
                             backgroundColor: theme.palette.action.hover,
-                            transform: 'scale(1.03)',
+                            transform: "scale(1.03)",
                           },
                         }}
                       >

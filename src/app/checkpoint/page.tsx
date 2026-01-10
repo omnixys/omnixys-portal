@@ -20,7 +20,7 @@ import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import EventIcon from "@mui/icons-material/Event";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 
-const EVENT_ID = process.env.EVENT_ID || "cmjzoow54000nhmijxkg2fb7h";
+const EVENT_ID = process.env.EVENT_ID || "cmk6vasuo000nh8ijz4lhyotn";
 export default function HomePage(): JSX.Element {
   const theme = useTheme();
   const { isAuthenticated, user } = useAuth();

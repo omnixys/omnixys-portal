@@ -17,11 +17,14 @@ type ProviderProps = { children: React.ReactNode };
 
 export default function Provider({ children }: ProviderProps) {
   const pathname = usePathname();
-  const isAuthRoute =
-    pathname.startsWith("/login") ||
-    pathname.startsWith("/register") ||
-    pathname.startsWith("/unlock") ||
-    pathname.startsWith("/rsvp");
+  const AUTH_ROUTES = [
+    "/checkpoint/login",
+    "/checkpoint/register",
+    "/checkpoint/unlock",
+    "/checkpoint/rsvp",
+  ];
+
+  const isAuthRoute = AUTH_ROUTES.some((route) => pathname.startsWith(route));
 
   const [hydrated, setHydrated] = React.useState(false);
   const [showOnboarding, setShowOnboarding] = React.useState(false);
