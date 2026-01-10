@@ -34,7 +34,7 @@ import { useAutoRotateQr } from "./useAutoRotateQr";
 import { useCriticalPhaseHaptic } from "./useCriticalPhaseHaptic";
 import { useQrActiveState } from "./useQrActiveState";
 
-const RING_SIZE = 360;
+const RING_SIZE = 420;
 const QR_SIZE = 260;
 const QR_INSET = (RING_SIZE - QR_SIZE) / 2; // = 50
 

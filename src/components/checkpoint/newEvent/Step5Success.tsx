@@ -60,7 +60,7 @@ export default function Step5Success({
             variant="outlined"
             size="large"
             sx={{ borderRadius: 3 }}
-            href="/checkpoint/events"
+            href="/checkpoint/event"
           >
             Weitere Events anzeigen
           </Button>

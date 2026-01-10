@@ -41,7 +41,7 @@ export default function EventActions({ ev }: EventHeaderProps) {
             fullWidth
             variant="outlined"
             component={Link}
-            href={`/my-seat?eventId=${ev.id}`}
+            href={`/checkpoint/my-seat?eventId=${ev.id}`}
             sx={{ borderRadius: 3 }}
           >
             My seat

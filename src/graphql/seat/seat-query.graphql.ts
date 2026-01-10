@@ -27,8 +27,14 @@ export const GET_GUEST_SEAT_BY_EVENT = gql`
       id
       invitationId
       eventId
-      section
-      table
+      section {
+        name
+        id
+      }
+      table {
+        name
+        id
+      }
       number
       note
       guestId

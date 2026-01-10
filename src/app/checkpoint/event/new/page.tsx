@@ -102,7 +102,7 @@ export default function CreateEventPage(): JSX.Element {
 
   return (
     <Box sx={{ p: { xs: 2, sm: 3 }, maxWidth: 600, mx: "auto" }}>
-      <AppleNavBar title="Neues Event" onBack={() => router.push("/checkpoint/events")} />
+      <AppleNavBar title="Neues Event" onBack={() => router.push("/checkpoint/event")} />
 
       <AppleProgress step={step} total={5} />
 
@@ -144,7 +144,7 @@ export default function CreateEventPage(): JSX.Element {
             {step === 5 && (
               <Step5Success
                 eventId={createdId!}
-                onDone={() => router.push(`/events/${createdId}`)}
+                onDone={() => router.push(`/event/${createdId}`)}
               />
             )}
           </>

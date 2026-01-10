@@ -83,7 +83,7 @@ export default function ActiveEventGuard({
             <Button
               variant="contained"
               fullWidth
-              href="/checkpoint/events"
+              href="/checkpoint/event"
               sx={{ borderRadius: 2 }}
             >
               Event auswählen
@@ -151,7 +151,7 @@ export default function ActiveEventGuard({
             <Button
               variant="contained"
               sx={{ mt: 3, borderRadius: 2 }}
-              href="/checkpoint/events"
+              href="/checkpoint/event"
             >
               Event auswählen
             </Button>
