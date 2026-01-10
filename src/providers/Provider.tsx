@@ -22,6 +22,8 @@ export default function Provider({ children }: ProviderProps) {
     "/checkpoint/register",
     "/checkpoint/unlock",
     "/checkpoint/rsvp",
+    "/checkpoint/password-reset",
+    "/checkpoint/forgot-password",
   ];
 
   const isAuthRoute = AUTH_ROUTES.some((route) => pathname.startsWith(route));

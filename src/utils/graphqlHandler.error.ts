@@ -30,7 +30,7 @@ export interface GatewayGraphQLResponse<T> {
  * Global GraphQL error handler for Apollo Client 4.
  * No deprecated ApolloError class is used.
  */
-export function handleGraphQLError(error: unknown, message: string): never {
+export function handleGraphQLError(error: unknown, message: string) {
   if (typeof error === "object" && error !== null && "graphQLErrors" in error) {
     const gqlErrors = (error as any).graphQLErrors as
       | GraphQLError[]
@@ -64,7 +64,8 @@ export function handleGraphQLError(error: unknown, message: string): never {
 
   if (error instanceof Error) {
     logger.error(`${message} - Error: ${error.message}`);
-    throw new Error(`${message}: ${error.message}`);
+    // throw new Error(`${message}: ${error.message}`);
+    return error.message;
   }
 
   logger.error(`${message} - Unknown error`);

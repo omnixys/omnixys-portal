@@ -19,6 +19,7 @@ export enum NotificationStatus {
   SENT = "SENT",
   FAILED = "FAILED",
   EXPIRED = "EXPIRED",
+  ARCHIVED = "ARCHIVED",
 }
 
 export enum DeliveryAttemptStatus {

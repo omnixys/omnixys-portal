@@ -82,8 +82,8 @@ env:
   NEXT_PUBLIC_GRAPHQL_WS_URL: ${{ secrets.NEXT_PUBLIC_GRAPHQL_WS_URL }}
   NEXT_PUBLIC_UPLOAD_URI: ${{ secrets.NEXT_PUBLIC_UPLOAD_URI }}
 
-  FALLBACK_URL: ${{ secrets.FALLBACK_URL }}
-  EVENT_ID: ${{ secrets.EVENT_ID }}
+  NEXT_PUBLIC_FALLBACK_URL: ${{ secrets.FALLBACK_URL }}
+  NEXT_PUBLIC_EVENT_ID: ${{ secrets.EVENT_ID }}
   
 jobs:
   ci:

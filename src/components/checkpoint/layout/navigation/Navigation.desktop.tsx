@@ -26,6 +26,7 @@ import { useAuth } from "@/providers/AuthProvider";
 import EventSelector from "@/components/checkpoint/Selectors/EventSelector";
 import ColorBubbleSwitcher from "@/components/checkpoint/ui/ColorBubbleSwitcher";
 import UserMenu from "@/components/checkpoint/ui/UserMenu";
+import Link from "next/link";
 
 type EventRole = "ADMIN" | "SECURITY" | "GUEST";
 
@@ -149,7 +150,22 @@ export default function NavigationDesktop(): JSX.Element {
         p: 3,
       }}
     >
-      <Typography variant="h5" fontWeight={700} mb={2}>
+      <Typography
+        variant="h5"
+        fontWeight={700}
+        mb={2}
+        component={Link}
+        href="/checkpoint"
+        sx={{
+          cursor: "pointer",
+          textDecoration: "none",
+          transition: "opacity 0.2s ease, transform 0.2s ease",
+          "&:hover": {
+            opacity: 0.85,
+            transform: "translateY(-1px)",
+          },
+        }}
+      >
         Checkpoint
       </Typography>
 

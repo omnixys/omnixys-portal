@@ -24,9 +24,12 @@ import { AuthManager } from "@/utils/AuthManager";
 import { AppleButton } from "@/components/checkpoint/apple/AppleButton";
 import { AppleCard } from "@/components/checkpoint/apple/AppleCard";
 import { useAuth } from "@/providers/AuthProvider";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm(): JSX.Element {
   const { refetchMe } = useAuth();
+    const router = useRouter();
+  
 
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -120,7 +123,7 @@ export default function LoginForm(): JSX.Element {
               fontSize: "0.85rem",
               mt: -2,
             }}
-            onClick={() => (window.location.href = "/checkpoint/forgot-password")}
+            onClick={() => router.push("/checkpoint/forgot-password")}
           >
             Passwort vergessen?
           </Button>
