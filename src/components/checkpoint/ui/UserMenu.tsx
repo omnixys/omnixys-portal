@@ -70,7 +70,7 @@ export default function UserMenu(): JSX.Element | null {
   const doLogout = async () => {
     handleClose();
     await logout();
-    router.replace("/checkpoint/login");
+    router.replace("/checkpoint");
   };
 
   return (
