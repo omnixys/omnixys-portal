@@ -5,6 +5,7 @@ import { Box } from "@mui/material";
 import React from "react";
 import UserMenu from "@/components/checkpoint/ui/UserMenu";
 import NavigationTablet from "./navigation/Navigation.tablet";
+import ColorBubbleSwitcher from "../ui/ColorBubbleSwitcher";
 
 export default function AppShellTablet({
   children,
@@ -58,6 +59,7 @@ export default function AppShellTablet({
           }}
         >
           <ThemeToggleButton />
+                <ColorBubbleSwitcher />
           <UserMenu />
         </Box>
 

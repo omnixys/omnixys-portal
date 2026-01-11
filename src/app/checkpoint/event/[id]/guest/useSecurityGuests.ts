@@ -8,6 +8,7 @@ import { SeatVM, SecurityGuestVM } from "./types";
 import { GET_TICKETS_BY_EVENT } from "../../../../../graphql/ticket/ticket.query";
 import { GET_USER_LIST } from "../../../../../graphql/user/user-query.graphql";
 import { GET_SEAT_LIST } from "../../../../../graphql/seat/seat-query.graphql";
+import { Ticket } from "../../../../../types/ticket/ticket.type";
 
 export function useSecurityGuests(eventId: string) {
   // 1️⃣ Tickets
@@ -18,7 +19,7 @@ export function useSecurityGuests(eventId: string) {
   } = useQuery(GET_TICKETS_BY_EVENT, { variables: { eventId } });
 
   const tickets =
-    ticketData?.ticketsByEvent.filter((t: any) => !t.revoked) ?? [];
+    ticketData?.ticketsByEvent.filter((t: Ticket) => !t.revoked) ?? [];
 
   // 2️⃣ Guest IDs (deduped)
   const guestIds = useMemo(

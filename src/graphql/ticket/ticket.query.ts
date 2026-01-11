@@ -67,6 +67,7 @@ export const GET_TICKETS_BY_EVENT = gql/* GraphQL */ `
       deviceActivationIP
       lastNonce
       nextNonce
+      checkedInAt
       rotationSeconds
       lastRotatedAt
     }

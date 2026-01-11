@@ -23,6 +23,9 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/providers/AuthProvider";
 import { useActiveEvent } from "@/providers/ActiveEventProvider";
+import ColorBubbleSwitcher from "./ColorBubbleSwitcher";
+import { useDevice } from "../../../providers/DeviceProvider";
+import { de } from 'date-fns/locale';
 
 /**
  * eventRoles:
@@ -34,6 +37,7 @@ type EventRole = "ADMIN" | "SECURITY" | "GUEST";
 
 export default function UserMenu(): JSX.Element | null {
   const router = useRouter();
+  const { device } = useDevice();
 
   const { user, isAuthenticated, loading, logout } = useAuth();
   const { activeEvent } = useActiveEvent();
@@ -116,6 +120,11 @@ export default function UserMenu(): JSX.Element | null {
           </Typography>
         </MenuItem>
 
+        { device === "mobile" && (
+          <MenuItem>
+              <ColorBubbleSwitcher />
+          </MenuItem>
+        )}
         {/* Profile */}
         <MenuItem onClick={() => go("/checkpoint/me")}>
           <ListItemIcon>

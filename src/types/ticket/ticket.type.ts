@@ -15,10 +15,11 @@ export type Ticket = {
   rotationSeconds: number;
   lastRotatedAt: string;
   currentState: PresenceState;
+  checkedInAt: string;
   revoked: boolean;
   createdAt: string;
   updatedAt: string;
-}
+};
 
 export type EventToken = {
   token: string;

@@ -9,57 +9,27 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { JSX } from "react";
-
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import BadgeIcon from "@mui/icons-material/Badge";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import EventSeatIcon from "@mui/icons-material/EventSeat";
-import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
+import { JSX, useState } from "react";
 
 import { useAuth } from "@/providers/AuthProvider";
 import EventSelector from "@/components/checkpoint/Selectors/EventSelector";
 import { useActiveEvent } from "@/providers/ActiveEventProvider";
 import { usePathname, useRouter } from "next/navigation";
+import { createNavigation } from "../navigation.config";
+import { EventRole } from "../../../../types/event/event-enum.type";
+import { motion } from "framer-motion";
+import { getRoleColor, isActiveNavItem } from "./navigation.util";
 
-type EventRole = "ADMIN" | "SECURITY" | "GUEST";
 
 export default function NavigationTablet(): JSX.Element {
+    const [collapsed, setCollapsed] = useState(false);
   const { isAuthenticated } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
-  const current = pathname.split("/checkpoint/")[1] ?? "checkpoint/home";
-
   const { activeEvent } = useActiveEvent();
-  const role: EventRole = activeEvent?.myRole ?? "GUEST";
+  const role: EventRole = activeEvent?.myRole ?? EventRole.GUEST;
 
-  const NAV: Record<
-    EventRole,
-    Array<{ label: string; icon: JSX.Element; path: string }>
-  > = {
-    ADMIN: [
-      { label: "Home", icon: <DashboardIcon />, path: "checkpoint/home" },
-      { label: "Scan", icon: <QrCodeScannerIcon />, path: "checkpoint/scan" },
-      { label: "Seats", icon: <EventSeatIcon />, path: "checkpoint/seats" },
-      { label: "Profil", icon: <AccountCircleIcon />, path: "checkpoint/me" },
-    ],
-    SECURITY: [
-      { label: "Scan", icon: <QrCodeScannerIcon />, path: "checkpoint/scan" },
-      { label: "Profil", icon: <AccountCircleIcon />, path: "checkpoint/me" },
-    ],
-    GUEST: [
-      { label: "Mein Ticket", icon: <BadgeIcon />, path: "checkpoint/my-qr" },
-      // { label: "Plus-Ones", icon: <GroupsIcon />, path: "my-plus-ones" },
-      { label: "Profil", icon: <AccountCircleIcon />, path: "checkpoint/me" },
-      {
-        label: "Mein Sitzplatz",
-        icon: <EventSeatIcon />,
-        path: "checkpoint/my-seat",
-      },
-    ],
-  };
-
-  const items = NAV[role];
+const items = createNavigation(role, activeEvent?.id);
 
   return (
     <Box
@@ -83,16 +53,112 @@ export default function NavigationTablet(): JSX.Element {
 
           <Divider sx={{ my: 2 }} />
 
-          <List>
+          <List sx={{ flexGrow: 1 }}>
             {items.map((item) => (
               <ListItemButton
+                title={collapsed ? item.label : undefined}
                 key={item.path}
-                selected={current === item.path}
+                disabled={item.disabled}
+                selected={isActiveNavItem(
+                  pathname,
+                  item.path,
+                  items.map((i) => i.path)
+                )}
                 onClick={() => router.push("/" + item.path)}
-                sx={{ borderRadius: 2 }}
+                sx={{
+                  position: "relative",
+                  borderRadius: 2,
+                  pl: 2.5,
+
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    left: 6,
+                    top: "50%",
+                    // transform: "translateY(-50%)",
+                    width: 4,
+                    height: "60%",
+                    borderRadius: 999,
+                    backgroundColor: isActiveNavItem(
+                      pathname,
+                      item.path,
+                      items.map((i) => i.path)
+                    )
+                      ? "primary.main"
+                      : "transparent",
+                    // transition:
+                    //   "background-color 0.25s ease, height 0.25s ease",
+
+                    transition: "transform 260ms cubic-bezier(.4,0,.2,1)",
+                    transformOrigin: "center",
+                    transform: isActiveNavItem(
+                      pathname,
+                      item.path,
+                      items.map((i) => i.path)
+                    )
+                      ? "translateY(-50%) scaleY(1)"
+                      : "translateY(-50%) scaleY(0)",
+                  },
+
+                  "&.Mui-selected": {
+                    backgroundColor: "rgba(255,255,255,0.08)",
+                  },
+
+                  "&:hover": {
+                    "@media (hover: hover)": {
+                      backgroundColor: "rgba(255,255,255,0.06)",
+                      boxShadow: "0 0 0 1px rgba(255,255,255,0.15)",
+                    },
+                  },
+                }}
               >
-                <ListItemIcon sx={{ minWidth: 36 }}>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.label} />
+                <ListItemIcon
+                  sx={{
+                    minWidth: 36,
+                    color: isActiveNavItem(
+                      pathname,
+                      item.path,
+                      items.map((i) => i.path)
+                    )
+                      ? getRoleColor(role)
+                      : "text.secondary",
+                    transition: "color 0.25s ease",
+                  }}
+                >
+                  <motion.div
+                    key={
+                      isActiveNavItem(
+                        pathname,
+                        item.path,
+                        items.map((i) => i.path)
+                      )
+                        ? "active"
+                        : "inactive"
+                    }
+                    initial={{ scale: 1 }}
+                    animate={
+                      isActiveNavItem(
+                        pathname,
+                        item.path,
+                        items.map((i) => i.path)
+                      )
+                        ? { scale: [1, 1.15, 1] }
+                        : { scale: 1 }
+                    }
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                  >
+                    {item.icon}
+                  </motion.div>
+                </ListItemIcon>
+
+                <ListItemText
+                  primary={item.label}
+                  sx={{
+                    opacity: collapsed ? 0 : 1,
+                    transition: "opacity 0.2s ease",
+                    whiteSpace: "nowrap",
+                  }}
+                />
               </ListItemButton>
             ))}
           </List>

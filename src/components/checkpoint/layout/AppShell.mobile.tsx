@@ -18,6 +18,8 @@ export default function AppShellMobile({
   const [open, setOpen] = useState(false);
   const { isAuthenticated } = useAuth();
 
+  const HEADER_HEIGHT = 56; // Apple-like
+
   return (
     <Box
       sx={{
@@ -25,27 +27,28 @@ export default function AppShellMobile({
         height: "100dvh",
         display: "flex",
         flexDirection: "column",
-        overflow: "hidden", // body ignorieren
+        overflow: "hidden",
       }}
     >
       {/* Sticky TopBar */}
       <Box
         sx={{
-          position: "sticky",
+          position: "fixed",
           top: 0,
-          zIndex: 100,
+          left: 0,
+          right: 0,
+          zIndex: 120,
         }}
       >
         <AppleNavBar
           title="Checkpoint"
+          // leftActions={<></>}
           rightActions={
             <>
-              <ThemeToggleButton />
-
               {isAuthenticated && (
                 <EventSelectorMobileButton onOpen={() => setOpen(true)} />
               )}
-
+              <ThemeToggleButton />
               <UserMenu />
             </>
           }
@@ -57,7 +60,9 @@ export default function AppShellMobile({
         sx={{
           flexGrow: 1,
           overflowY: "auto",
-          p: 2,
+          pt: `${HEADER_HEIGHT}px`,
+          pb: "72px", // Platz für BottomNav!
+          px: 2,
         }}
       >
         {children}
