@@ -79,3 +79,5 @@ export type RenameConflict = {
   name: string;
   id: string
 };
+
+export type SeatFilterStatus = "all" | SeatStatus;

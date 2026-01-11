@@ -6,6 +6,7 @@ export const GET_SEATS_BY_EVENT = gql`
       id
       invitationId
       eventId
+      status
       number
       note
       guestId
@@ -25,6 +26,7 @@ export const GET_GUEST_SEAT_BY_EVENT = gql`
   query GetSeatByGuestAndEvent($input: GuestEventSeatInput!) {
     getSeatByGuestAndEvent(input: $input) {
       id
+    
       invitationId
       eventId
       section {

@@ -10,6 +10,8 @@ import {
   MenuItem,
 } from "@mui/material";
 import { SeatFilter } from "./seat.types";
+import { SeatStatus } from "../../../types/seat/seat-enum.type";
+import { SeatFilterStatus } from "../../../types/seat/seat.type";
 
 interface Props {
   filter: SeatFilter;
@@ -41,13 +43,18 @@ export default function SeatFilters({ filter, onChange }: Props) {
       <Select
         fullWidth
         value={filter.status}
-        onChange={(e) => onChange({ ...filter, status: e.target.value as any })}
+        onChange={(e) =>
+          onChange({
+            ...filter,
+            status: e.target.value as SeatFilterStatus,
+          })
+        }
       >
         <MenuItem value="all">Alle</MenuItem>
-        <MenuItem value="free">Frei</MenuItem>
-        <MenuItem value="reserved">Reserviert</MenuItem>
-        <MenuItem value="taken">Besetzt</MenuItem>
-        <MenuItem value="blocked">Geblockt</MenuItem>
+        <MenuItem value={SeatStatus.AVAILABLE}>Verfügbar</MenuItem>
+        <MenuItem value={SeatStatus.RESERVED}>Reserviert</MenuItem>
+        <MenuItem value={SeatStatus.ASSIGNED}>Zugewiesen</MenuItem>
+        <MenuItem value={SeatStatus.BLOCKED}>Geblockt</MenuItem>
       </Select>
     </Stack>
   );

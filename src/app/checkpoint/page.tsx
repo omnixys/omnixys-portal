@@ -104,7 +104,7 @@ export default function HomePage(): JSX.Element {
     // role === "SECURITY"
     //   ? {
     //       label: "Scanner starten",
-    //       href: "/scan",
+    //       href: "/checkpointscan",
     //       icon: <QrCodeScannerIcon sx={{ fontSize: 44 }} />,
     //     }
       // :
@@ -124,7 +124,7 @@ export default function HomePage(): JSX.Element {
       : role === "SECURITY"
       ? {
           label: "Scanner starten",
-          href: "/scan",
+          href: "/checkpoint/scan",
           icon: <QrCodeScannerIcon />,
         }
       : null;

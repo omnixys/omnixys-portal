@@ -8,3 +8,11 @@ export enum ShapeType {
   VIP = "vip",
   SPIRAL = "spiral",
 }
+
+
+export enum SeatStatus {
+  AVAILABLE = "AVAILABLE",
+  RESERVED = "RESERVED",
+  ASSIGNED = "ASSIGNED",
+  BLOCKED = "BLOCKED",
+}

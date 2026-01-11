@@ -30,6 +30,7 @@ import {
 import { User } from "@/types/user/user.type";
 import { useMutation, useQuery } from "@apollo/client/react";
 import React from "react";
+import { SeatStatus } from "../../../types/seat/seat-enum.type";
 
 export function useSeats(eventId: string) {
   const { data, loading, refetch } = useQuery<
@@ -70,12 +71,7 @@ export function useSeats(eventId: string) {
 
     // STATUS
     if (filter.status !== "all") {
-      if (filter.status === "free") {
-        result = result.filter((s) => !isSeatOccupied);
-      }
-      if (filter.status === "taken") {
-        result = result.filter((s) => isSeatOccupied);
-      }
+      result = result.filter((s) => s.status === filter.status);
     }
 
     return result;
