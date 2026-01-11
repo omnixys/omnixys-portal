@@ -17,6 +17,7 @@ export const GET_TICKET_BY_ID = gql/* GraphQL */ `
       rotationSeconds
       lastRotatedAt
       currentState
+      checkedInAt
       revoked
       createdAt
       updatedAt

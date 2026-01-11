@@ -18,8 +18,7 @@ export default function ScanContent() {
   const [result, setResult] = useState<ScanResult | null>(null);
 
   const handleWebDetect = async (qrText: string) => {
-    const deviceHash = await getDeviceHash();
-    console.log({ deviceHash });
+    
     const res = await scanTicket(qrText);
     await playScanFeedback(res);
     setResult(res);

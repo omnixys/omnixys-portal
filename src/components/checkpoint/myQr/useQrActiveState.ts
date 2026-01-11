@@ -24,7 +24,7 @@ export function useQrActiveState({
   rotationSeconds,
   cycleKey,
   enabled,
-  inactiveBeforeExpirySeconds = 5,
+  inactiveBeforeExpirySeconds = 15,
 }: Params): boolean {
   const [isActive, setIsActive] = useState(false);
 

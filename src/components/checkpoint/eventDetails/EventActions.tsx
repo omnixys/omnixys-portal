@@ -56,7 +56,7 @@ export default function EventActions({ ev }: EventHeaderProps) {
             fullWidth
             variant="contained"
             component={Link}
-            href={`/scan?eventId=${ev.id}`}
+            href={`/checkpoint/scan?eventId=${ev.id}`}
             sx={{ borderRadius: 3 }}
           >
             Scanner starten
@@ -76,7 +76,7 @@ export default function EventActions({ ev }: EventHeaderProps) {
             fullWidth
             variant="outlined"
             component={Link}
-            href={`/checkpoint/event/${ev.id}/guests`}
+            href={`/checkpoint/event/${ev.id}/guest`}
             sx={{ borderRadius: 3 }}
           >
             Gästeliste
