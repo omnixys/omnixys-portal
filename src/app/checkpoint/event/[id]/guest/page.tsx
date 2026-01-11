@@ -18,6 +18,7 @@ import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { useSecurityGuests } from "./useSecurityGuests";
 import { useParams } from "next/navigation";
+import BackToEventDetail from "../../../../../components/checkpoint/invitationList/button/BackToEventDetail";
 
 
 type Filter = "ALL" | "NOT_ARRIVED" | "CHECKED_IN" | "INSIDE" | "OUTSIDE";
@@ -53,6 +54,7 @@ export default function SecurityGuestListPage() {
   return (
     <Container maxWidth="lg">
       <Stack spacing={4}>
+         <BackToEventDetail />
         {/* Header */}
         <Stack spacing={1}>
           <Typography variant="h4" fontWeight={700} color={apple.label}>

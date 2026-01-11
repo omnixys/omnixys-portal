@@ -25,7 +25,6 @@ export default function HomePage(): JSX.Element {
   const theme = useTheme();
   const { isAuthenticated, user } = useAuth();
   const { activeEvent } = useActiveEvent();
-  const { device } = useDevice();
 
   const role = activeEvent?.myRole ?? "GUEST";
 

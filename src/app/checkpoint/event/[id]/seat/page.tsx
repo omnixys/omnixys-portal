@@ -16,12 +16,15 @@ import { alpha, Box, Button, Stack } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
 import { useAuth } from "../../../../../providers/AuthProvider";
+import { useActiveEvent } from "../../../../../providers/ActiveEventProvider";
 
 export default function SeatsPage() {
         const { isAuthenticated } = useAuth();
   const { id } = useParams();
   const logger = getLogger("SeatsPage");
   const eventId = id as string;
+    const { activeRole   } = useActiveEvent();
+
 
   const {
     seats,
@@ -70,14 +73,18 @@ export default function SeatsPage() {
         <Stack direction="row" spacing={1} alignItems="center">
           <BackToEventDetail />
 
-          <Button
-            size="small"
-            variant="outlined"
-            startIcon={<EditOutlined />}
-            onClick={() => router.push(`/checkpoint/event/${eventId}/seat/edit`)}
-          >
-            Sitzstruktur
-          </Button>
+          {activeRole === "ADMIN" && (
+            <Button
+              size="small"
+              variant="outlined"
+              startIcon={<EditOutlined />}
+              onClick={() =>
+                router.push(`/checkpoint/event/${eventId}/seat/edit`)
+              }
+            >
+              Sitzstruktur
+            </Button>
+          )}
         </Stack>
 
         <CollapsingSeatHeader />
@@ -85,7 +92,9 @@ export default function SeatsPage() {
         <SeatFilters filter={filter} onChange={setFilter} />
       </Box>
 
-      <SeatImportButton onOpen={() => setImportOpen(true)} />
+      {activeRole === "ADMIN" && (
+        <SeatImportButton onOpen={() => setImportOpen(true)} />
+      )}
 
       <MapManager
         seats={seats}
@@ -108,6 +117,7 @@ export default function SeatsPage() {
         onClose={drawer.close}
         onEdit={drawer.edit}
         getSeatHolderLabel={getSeatHolderLabel}
+        role={activeRole}
       />
 
       {drawer.editing && drawer.seatId && (

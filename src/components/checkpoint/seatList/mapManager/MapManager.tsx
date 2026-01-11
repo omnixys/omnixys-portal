@@ -88,7 +88,7 @@ export default function MapManager({
       </Box>
 
       {/* Editor Toggle */}
-      <EditorToggleButton active={editor} onClick={() => setEditor(!editor)} />
+      {/* <EditorToggleButton active={editor} onClick={() => setEditor(!editor)} /> */}
 
       {sectionDialog && (
         <SectionInfoDialog

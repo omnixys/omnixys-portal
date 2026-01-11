@@ -12,6 +12,7 @@ import {
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { EventRole } from "../../../types/event/event-enum.type";
 
 export default function SeatDetailDrawer({
   open,
@@ -19,12 +20,14 @@ export default function SeatDetailDrawer({
   onClose,
   onEdit,
   getSeatHolderLabel,
+  role
 }: {
   open: boolean;
   seat: Seat | undefined;
   onClose: () => void;
   onEdit: () => void;
-  getSeatHolderLabel: (seat: Seat) => string;
+    getSeatHolderLabel: (seat: Seat) => string;
+    role?: EventRole;
 }) {
   const theme = useTheme();
   const [seatId, setSeatId] = useState<string | null>(null);
@@ -70,14 +73,16 @@ export default function SeatDetailDrawer({
 
           <Divider />
 
-          <Stack direction="row" spacing={1}>
-            <Button variant="contained" onClick={onEdit}>
-              Bearbeiten
-            </Button>
-            <Button variant="outlined" onClick={onClose}>
-              Schließen
-            </Button>
-          </Stack>
+          {role && role === "ADMIN" && (
+            <Stack direction="row" spacing={1}>
+              <Button variant="contained" onClick={onEdit}>
+                Bearbeiten
+              </Button>
+              <Button variant="outlined" onClick={onClose}>
+                Schließen
+              </Button>
+            </Stack>
+          )}
         </Stack>
       )}
     </Drawer>

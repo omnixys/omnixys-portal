@@ -81,6 +81,16 @@ export default function EventActions({ ev }: EventHeaderProps) {
           >
             Gästeliste
           </Button>
+
+          <Button
+            fullWidth
+            variant="outlined"
+            component={Link}
+            href={`/checkpoint/event/${ev.id}/seat`}
+            sx={{ borderRadius: 3 }}
+          >
+            Sitzplätze
+          </Button>
         </>
       )}
 
@@ -128,11 +138,33 @@ export default function EventActions({ ev }: EventHeaderProps) {
           </Button>
 
           <Button
+            component={Link}
+            href={`/checkpoint/event/${ev.id}/scans`}
+            fullWidth
+            variant="outlined"
+            sx={{ borderRadius: 3 }}
+            disabled
+          >
+            Scan Logs
+          </Button>
+
+          <Button
+            fullWidth
+            variant="outlined"
+            component={Link}
+            href={`/checkpoint/event/${ev.id}/guest`}
+            sx={{ borderRadius: 3 }}
+          >
+            Gästeliste
+          </Button>
+
+          <Button
             fullWidth
             variant="outlined"
             component={Link}
             href={`/checkpoint/event/${ev.id}/settings`}
             sx={{ borderRadius: 3 }}
+            disabled
           >
             Event Einstellungen
           </Button>
