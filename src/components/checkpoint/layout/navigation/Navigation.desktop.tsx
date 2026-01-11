@@ -72,6 +72,12 @@ export default function NavigationDesktop(): JSX.Element {
     ],
     SECURITY: [
       {
+        label: "Home",
+        icon: <DashboardIcon />,
+        path: "checkpoint",
+        disabled: false,
+      },
+      {
         label: "Scanner",
         icon: <QrCodeScannerIcon />,
         path: "checkpoint/scan",

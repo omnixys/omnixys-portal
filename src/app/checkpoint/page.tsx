@@ -101,13 +101,14 @@ export default function HomePage(): JSX.Element {
    * ------------------------------------------------------------------ */
 
   const primaryAction =
-    role === "SECURITY"
-      ? {
-          label: "Scanner starten",
-          href: "/scan",
-          icon: <QrCodeScannerIcon sx={{ fontSize: 44 }} />,
-        }
-      : {
+    // role === "SECURITY"
+    //   ? {
+    //       label: "Scanner starten",
+    //       href: "/scan",
+    //       icon: <QrCodeScannerIcon sx={{ fontSize: 44 }} />,
+    //     }
+      // :
+  {
           label: "Meine Events",
           href: "/checkpoint/event",
           icon: <EventIcon sx={{ fontSize: 44 }} />,
@@ -119,6 +120,12 @@ export default function HomePage(): JSX.Element {
           label: "Meine Tickets",
           href: "/checkpoint/my-qr",
           icon: <ConfirmationNumberIcon />,
+        }
+      : role === "SECURITY"
+      ? {
+          label: "Scanner starten",
+          href: "/scan",
+          icon: <QrCodeScannerIcon />,
         }
       : null;
 
