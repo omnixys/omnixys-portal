@@ -74,3 +74,21 @@ export const GET_SEAT_BY_ID = gql`
     }
   }
 `;
+
+
+export const GET_SEAT_LIST = gql`
+  query GetSeatList($seatIdList: [ID!]!) {
+    getSeatList(seatIds: $seatIdList) {
+      id
+      number
+      label
+      guestId
+      section {
+        name
+      }
+      table {
+        name
+      }
+    }
+  }
+`;

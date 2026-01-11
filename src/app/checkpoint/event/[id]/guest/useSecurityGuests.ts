@@ -1,28 +1,26 @@
 // app/security/guests/useSecurityGuests.ts
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import { useApolloClient, useQuery } from "@apollo/client/react";
-import { SecurityGuestVM } from "./types";
+import { useMemo } from "react";
+import { useQuery } from "@apollo/client/react";
+import { SeatVM, SecurityGuestVM } from "./types";
 
 import { GET_TICKETS_BY_EVENT } from "../../../../../graphql/ticket/ticket.query";
 import { GET_USER_LIST } from "../../../../../graphql/user/user-query.graphql";
-import { GET_SEAT_BY_ID } from "../../../../../graphql/seat/seat-query.graphql";
-import { Seat } from "../../../../../types/seat/seat.type";
+import { GET_SEAT_LIST } from "../../../../../graphql/seat/seat-query.graphql";
 
 export function useSecurityGuests(eventId: string) {
-  const client = useApolloClient();
-
   // 1️⃣ Tickets
-  const { data: ticketData, loading: ticketsLoading } = useQuery(
-    GET_TICKETS_BY_EVENT,
-    { variables: { eventId } }
-  );
+  const {
+    data: ticketData,
+    loading: ticketsLoading,
+    refetch: refetchTickets,
+  } = useQuery(GET_TICKETS_BY_EVENT, { variables: { eventId } });
 
   const tickets =
     ticketData?.ticketsByEvent.filter((t: any) => !t.revoked) ?? [];
 
-  // 2️⃣ Users (batch)
+  // 2️⃣ Guest IDs (deduped)
   const guestIds = useMemo(
     () => [
       ...new Set(tickets.map((t: any) => t.guestProfileId).filter(Boolean)),
@@ -37,63 +35,40 @@ export function useSecurityGuests(eventId: string) {
 
   const userMap = useMemo(() => {
     const map = new Map<string, string>();
-    userData?.getUserList.forEach((u: any) => {
+    userData?.getUserList?.forEach((u: any) => {
       map.set(u.id, `${u.firstName} ${u.lastName}`);
     });
     return map;
   }, [userData]);
 
-  // 3️⃣ Seats (imperativ, korrekt)
-  const [seatMap, setSeatMap] = useState<Map<string, SeatVM>>(new Map());
+  // 3️⃣ Seat IDs (deduped)
+  const seatIds = useMemo(
+    () => [...new Set(tickets.map((t: any) => t.seatId).filter(Boolean))],
+    [tickets]
+  );
+
+  // 4️⃣ Seats (Batch-Query – korrekt, deklarativ)
+  const { data: seatData } = useQuery(GET_SEAT_LIST, {
+    variables: { seatIdList: seatIds },
+    skip: seatIds.length === 0,
+  });
+
+  const seatMap = useMemo(() => {
+    const map = new Map<string, SeatVM>();
+
+    seatData?.getSeatList?.forEach((seat: any) => {
+      map.set(seat.id, {
+        section: seat.section?.name,
+        table: seat.table?.name,
+        number: seat.label ?? seat.number ?? undefined,
+      });
+    });
 
 
-  useEffect(() => {
-    let cancelled = false;
+    return map;
+  }, [seatData]);
 
-    async function loadSeats() {
-      const seatIds = [
-        ...new Set(tickets.map((t: any) => t.seatId).filter(Boolean)),
-      ];
-
-      if (seatIds.length === 0) return;
-
-      const map = new Map<string, string>();
-
-      await Promise.all(
-        seatIds.map(async (seatId) => {
-          const { data } = await client.query({
-            query: GET_SEAT_BY_ID,
-            variables: { seatId },
-          });
-
-          const seat: Seat | undefined = data?.seat;
-          if (!seat) return;
-
-          const label = `${seat.section.name} | ${seat.table.name} | ${
-                seat.label ?? seat.number ?? ""
-              }`;
-
-          map.set(seatId, {
-            section: seat.section?.name,
-            table: seat.table?.name,
-            number: seat.label ?? seat.number ?? undefined,
-          });
-        })
-      );
-
-      if (!cancelled) {
-        setSeatMap(map);
-      }
-    }
-
-    loadSeats();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [tickets, client]);
-
-  // 4️⃣ Aggregation → ViewModel
+  // 5️⃣ Aggregation → ViewModel
   const guests: SecurityGuestVM[] = useMemo(() => {
     return tickets.map((ticket: any) => ({
       ticketId: ticket.id,
@@ -101,11 +76,10 @@ export function useSecurityGuests(eventId: string) {
 
       name: userMap.get(ticket.guestProfileId) ?? "Unbekannter Gast",
 
-      seat: seatMap.get(ticket.seatId) ?? "—",
+      seat: seatMap.get(ticket.seatId) ?? undefined,
 
       status: ticket.checkedInAt ? "CHECKED_IN" : "NOT_ARRIVED",
       presence: ticket.currentState,
-
       checkedInAt: ticket.checkedInAt ?? undefined,
     }));
   }, [tickets, userMap, seatMap]);
@@ -113,5 +87,8 @@ export function useSecurityGuests(eventId: string) {
   return {
     guests,
     loading: ticketsLoading,
+    reload: async () => {
+      await refetchTickets();
+    },
   };
 }

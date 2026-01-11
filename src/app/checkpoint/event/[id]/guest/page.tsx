@@ -13,12 +13,15 @@ import {
   FormControl,
   Switch,
   FormControlLabel,
+  Divider,
 } from "@mui/material";
 import { motion } from "framer-motion";
 import { useMemo, useState } from "react";
 import { useSecurityGuests } from "./useSecurityGuests";
 import { useParams } from "next/navigation";
 import BackToEventDetail from "../../../../../components/checkpoint/invitationList/button/BackToEventDetail";
+import RefreshArcButton from "../../../../../components/checkpoint/invitationList/RefreshArcButton";
+
 
 
 type Filter = "ALL" | "NOT_ARRIVED" | "CHECKED_IN" | "INSIDE" | "OUTSIDE";
@@ -36,25 +39,113 @@ export default function SecurityGuestListPage() {
   const [highContrast, setHighContrast] = useState(false);
   const [largeText, setLargeText] = useState(false);
 
-  const { guests, loading } = useSecurityGuests(eventId as string);
+  const { guests, loading, reload } = useSecurityGuests(eventId as string);
 
   const guestsFiltered = useMemo(() => {
     return guests.filter((g) => {
       const matchesSearch =
         g.name.toLowerCase().includes(search.toLowerCase()) ||
-        g.seat?.number?.toLowerCase().includes(search.toLowerCase());
+        String(g.seat?.number ?? "")
+          .toLowerCase()
+          .includes(search.toLowerCase());
+
 
       const matchesFilter =
-        filter === "ALL" || g.status === filter || g.presence === filter;
+        filter === "ALL" ||
+        (filter === "NOT_ARRIVED" && g.status === "NOT_ARRIVED") ||
+        (filter === "CHECKED_IN" && g.status === "CHECKED_IN") ||
+        (filter === "INSIDE" && g.presence === "INSIDE") ||
+        (filter === "OUTSIDE" && g.presence === "OUTSIDE");
+
 
       return matchesSearch && matchesFilter;
     });
-  }, [search, filter]);
+  }, [search, filter, guests]);
+  
+  const counters = useMemo(() => {
+    return {
+      total: guestsFiltered.length,
+      checkedIn: guestsFiltered.filter((g) => g.status === "CHECKED_IN").length,
+      inside: guestsFiltered.filter((g) => g.presence === "INSIDE").length,
+      outside: guestsFiltered.filter((g) => g.presence === "OUTSIDE").length,
+    };
+  }, [guestsFiltered]);
+
 
   return (
     <Container maxWidth="lg">
       <Stack spacing={4}>
-         <BackToEventDetail />
+        <BackToEventDetail />
+
+        {/* Sticky Header */}
+        <Paper
+          elevation={0}
+          sx={{
+            position: "sticky",
+            top: 0,
+            zIndex: 20,
+            backdropFilter: "blur(18px)",
+            backgroundColor: apple.background + "ee",
+            border: `1px solid ${omni.secondary}`,
+            borderRadius: 3,
+            px: 3,
+            py: 2,
+          }}
+        >
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={2}
+            justifyContent="space-between"
+            alignItems={{ md: "center" }}
+          >
+            {/* Counters */}
+            <Stack direction="row" spacing={2} alignItems="center">
+              <Typography fontWeight={700} color={apple.label}>
+                Gäste
+              </Typography>
+
+              <Divider orientation="vertical" flexItem />
+
+              <Chip
+                label={`Gesamt: ${counters.total}`}
+                sx={{ fontWeight: 700 }}
+              />
+
+              <Chip
+                label={`Eingecheckt: ${counters.checkedIn}`}
+                sx={{
+                  fontWeight: 700,
+                  bgcolor: omni.success + "22",
+                  color: omni.success,
+                }}
+              />
+
+              <Chip
+                label={`Drinnen: ${counters.inside}`}
+                sx={{
+                  fontWeight: 700,
+                  bgcolor: omni.primary + "22",
+                  color: omni.primary,
+                }}
+              />
+
+              <Chip
+                label={`Draußen: ${counters.outside}`}
+                sx={{
+                  fontWeight: 700,
+                  bgcolor: apple.quaternaryLabel + "22",
+                  color: apple.quaternaryLabel,
+                }}
+              />
+            </Stack>
+
+            {/* Actions */}
+            <Stack direction="row" spacing={1} alignItems="center">
+              <RefreshArcButton onReload={reload} />
+            </Stack>
+          </Stack>
+        </Paper>
+
         {/* Header */}
         <Stack spacing={1}>
           <Typography variant="h4" fontWeight={700} color={apple.label}>
@@ -125,7 +216,7 @@ export default function SecurityGuestListPage() {
 
             return (
               <motion.div
-                key={guest.guestId}
+                key={guest.ticketId}
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.04 }}
@@ -199,7 +290,6 @@ export default function SecurityGuestListPage() {
                       ) : (
                         <Typography color={apple.secondaryLabel}>—</Typography>
                       )}
-                      
                     </Stack>
 
                     <Stack direction="row" spacing={1} alignItems="center">
