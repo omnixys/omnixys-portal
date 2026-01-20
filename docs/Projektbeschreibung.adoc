@@ -1,0 +1,400 @@
+= Nexys – The Omnixys Digital Platform
+:toc:
+:toclevels: 3
+:doctype: book
+:icons: font
+:sectanchors:
+:sectlinks:
+:sectnums:
+:pagenums:
+
+== 1. Executive Summary
+
+*Nexys* ist die zentrale, modulare Digitalplattform von *Omnixys*.  
+Sie wurde entwickelt, um komplexe Geschäftsdomänen wie **Commerce, Banking, Finance, Travel, Entertainment, Analytics und Identity** in einer **hochskalierbaren, serviceorientierten Architektur** abzubilden.
+
+Nexys folgt konsequent modernen Industriestandards:
+* API-First & Domain-Driven Design
+* Strikte Service-Isolation
+* Event-Driven Communication
+* Zero-Trust-Security
+* Cloud- & Container-Native Execution
+
+Die Plattform ist darauf ausgelegt, **schnell neue Geschäftsmodelle zu integrieren**, bestehende Services unabhängig weiterzuentwickeln und dabei **Stabilität, Sicherheit und Beobachtbarkeit** auf Enterprise-Niveau sicherzustellen.
+
+---
+
+== 2. Architekturprinzipien
+
+=== 2.1 Microservice-First
+
+Jede fachliche Domäne wird als **eigenständiger Microservice** umgesetzt:
+* Eigene Codebasis
+* Eigene Datenbank
+* Eigene Deployment-Einheit
+* Keine Shared Databases
+
+Abhängigkeiten zwischen Services erfolgen **ausschließlich über klar definierte Schnittstellen**.
+
+---
+
+=== 2.2 API- & GraphQL-First
+
+* GraphQL dient als **primäres Integrationsprotokoll**
+* Einheitliches Schema über ein zentrales Gateway
+* Frontend-getriebene Entwicklung (Schema-Contracts)
+* Strikte Typisierung und Versionierung
+
+---
+
+=== 2.3 Event-Driven Architecture
+
+Asynchrone Prozesse werden über **Kafka-basierte Events** realisiert:
+* Lose Kopplung zwischen Services
+* Skalierbare Workflows
+* Revisionssichere Geschäftsereignisse
+* Saubere Trennung von Command & Query Responsibility (CQRS)
+
+---
+
+== 3. Zentrale Domänen & Services
+
+=== 3.1 Customer Domain
+
+Der Customer-Service bildet das Fundament aller kundenbezogenen Prozesse.
+
+**Kundentypen**
+* *Basic* – Standardkunde ohne Rabatt
+* *Elite* – 15 % Rabatt auf alle Produkte
+* *Supreme* – 10 % Rabatt auf alle Produkte
+
+**Kernfunktionen**
+* Selbstregistrierung
+* Automatische Provisionierung:
+  **Account** + **Shopping Cart** (Event-getrieben)
+* Eigene Profilverwaltung
+* Kontaktverwaltung
+* Rollen- und Rechteprüfung
+
+**Zugriffsregeln**
+* Kunden sehen und ändern ausschließlich ihr eigenes Profil
+* Administratoren besitzen Vollzugriff
+
+---
+
+=== 3.2 Account & Banking Domain
+
+Der Account-Service verwaltet finanzielle Konten.
+
+**Funktionalitäten**
+* Mehrere Kontotypen pro Kunde (je Typ maximal eins)
+* Kontoeröffnung & -schließung (Soft-Close)
+* Saldenabfragen (einzeln oder aggregiert)
+* Strikte Trennung von Kunden- und Admin-Sicht
+
+**Governance**
+* Nur Administratoren dürfen Konten endgültig löschen
+* Audit-Logging für alle Kontooperationen
+
+---
+
+=== 3.3 Transaction Domain
+
+Der Transaction-Service stellt **revisionssichere Finanzbewegungen** sicher.
+
+* Transaktionen sind immer kontogebunden
+* Nur Kontoinhaber dürfen Transaktionen ausführen
+* Kommunikation mit Account-Service erfolgt asynchron (Kafka)
+* Administratoren erhalten globale Einsicht
+
+---
+
+=== 3.4 Invoice Domain
+
+Der Invoice-Service bildet den kompletten Rechnungszyklus ab.
+
+* Erstellung von Rechnungen (User & Admin)
+* Zahlungsstatus-Tracking
+* Verknüpfung mit Transaktionen
+* Kunden sehen nur eigene Rechnungen
+* Administratoren sehen alle Rechnungen
+
+---
+
+=== 3.5 Shopping- & Order Domain
+
+**Shopping Cart**
+* Automatische Erstellung bei Kundenregistrierung
+* Isolierte Warenkorbverwaltung
+* Automatische Löschung bei Kundenentfernung
+
+**Order**
+* Ein Auftrag kann mehrere Positionen enthalten
+* Klare Trennung zwischen Cart- und Order-Lifecycle
+
+---
+
+== 4. Security & Identity
+
+=== 4.1 Identity & Access Management
+
+* Zentrales IAM (Keycloak-basiert)
+* Rollen- und Tier-Modell:
+  * BASIC
+  * ELITE
+  * SUPREME
+  * EMPLOYEE
+  * ADMIN
+
+* Token-basierte Authentifizierung (JWT)
+* Fine-Grained Authorization pro Service
+
+---
+
+=== 4.2 Transport Security
+
+* TLS-Verschlüsselung auf allen Service-Grenzen
+* Unterstützung selbstsignierter Zertifikate für Dev/Test
+* Trennung von interner und externer Kommunikation
+
+---
+
+== 5. Technologiestack
+
+=== 5.1 Backend
+
+* **Java / Spring Boot** – Finanz- & Kernservices
+* **TypeScript / NestJS** – Gateway & Commerce-Services
+* **Python / FastAPI** – Analytics, Notifications, AI
+
+---
+
+=== 5.2 Frontend
+
+* **Next.js (App Router)**
+* SEO-optimierte, skalierbare Routing-Struktur
+* GraphQL-Subscriptions für Realtime-Updates
+
+---
+
+=== 5.3 Infrastructure
+
+* Docker & Docker Compose
+* Kafka
+* PostgreSQL / MySQL / MongoDB / Redis
+* Prometheus & Grafana (Monitoring)
+* Zentralisiertes Logging
+
+---
+
+== 6. Betriebs- & Qualitätsstandards
+
+* Klare Port-Konventionen
+* Einheitliche Repository-Strukturen
+* CI/CD über wiederverwendbare Workflows
+* Versionssichere Builds
+* Strikte Namens- & Coding-Konventionen
+
+---
+
+== 7. Zielsetzung & Ausblick
+
+Nexys ist nicht als monolithische Anwendung konzipiert, sondern als **lebendes Ökosystem**.
+
+Ziel ist es:
+* Neue Domänen ohne Architekturbruch zu integrieren
+* Technologische Weiterentwicklung pro Service zu ermöglichen
+* Enterprise-Anforderungen an Sicherheit, Compliance und Skalierung zu erfüllen
+* Langfristig KI-gestützte Entscheidungs- und Automatisierungsprozesse zu etablieren
+
+---
+
+== 8. Lizenz & Nutzung
+
+Dieses Projekt wird unter der **GNU General Public License v3.0** veröffentlicht.
+
+== 9. Microservice-Landschaft & Technologie-Matrix
+
+Die Nexys-Plattform folgt dem Prinzip **„Technology follows the Domain“**.  
+Jede fachliche Domäne wird in der Sprache und mit der Datenbank umgesetzt, die für deren Anforderungen (Konsistenz, Performance, Flexibilität, Skalierung) optimal geeignet ist.
+
+Ziel ist **bewusste technologische Diversität** bei gleichzeitig einheitlichen Betriebs- und Architekturstandards.
+
+---
+
+=== 9.1 Übersicht – Implementierte Microservices
+
+[cols="2,2,2,3,3", options="header"]
+|===
+| Service
+| Domäne
+| Sprache
+| Datenbank
+| Begründung
+
+| Customer
+| Identity / CRM
+| Java (Spring Boot)
+| PostgreSQL
+| Starke Konsistenz, relationale Kundendaten
+
+| Account
+| Banking
+| Java (Spring Boot)
+| PostgreSQL
+| ACID-Transaktionen, Finanz-Compliance
+
+| Transaction
+| Finance
+| Java (Spring Boot)
+| PostgreSQL
+| Revisionssicherheit & Audit-Trails
+
+| Invoice
+| Finance
+| Java (Spring Boot)
+| MySQL
+| Klassische Rechnungsmodelle, Reporting
+
+| Shopping-Cart
+| Commerce
+| TypeScript (NestJS)
+| PostgreSQL
+| Relationale Struktur + hohe Änderungsrate
+
+| Order
+| Commerce
+| TypeScript (NestJS)
+| MySQL
+| Klare Order-Relations, hohe Leselast
+
+| Product
+| Catalog
+| TypeScript (NestJS)
+| MongoDB
+| Flexible Produktstrukturen, Varianten
+
+| Inventory
+| Supply Chain
+| Python (FastAPI)
+| PostgreSQL
+| Konsistenter Lagerbestand, Reservierungen
+
+| Notification
+| Messaging
+| Python (FastAPI)
+| MongoDB
+| Hohe Schreiblast, schemalose Payloads
+
+| Analytics
+| BI / KPIs
+| Python (FastAPI)
+| PostgreSQL
+| Aggregationen, Zeitreihen, Exporte
+
+| Recommendation
+| AI / ML
+| Python (FastAPI)
+| MongoDB
+| Modellbasierte, dynamische Daten
+
+| Reviews
+| Feedback
+| TypeScript (NestJS)
+| MongoDB
+| Unstrukturierte Inhalte, Skalierung
+
+| Authentication
+| Security
+| TypeScript (NestJS)
+| PostgreSQL
+| Token, Sessions, Rollenmodelle
+
+| LogCollector
+| Observability
+| Python (FastAPI)
+| MongoDB
+| Event- & Log-Streams, Append-only
+
+| Gateway
+| API Orchestration
+| TypeScript (NestJS)
+| — (stateless)
+| Zentrales GraphQL-Gateway
+|===
+
+---
+
+=== 9.2 Technologie-Abdeckung (Pflichtkombinationen)
+
+Die folgende Matrix stellt sicher, dass **jede Kernkombination aus Sprache und Datenbank** mindestens einmal produktiv eingesetzt wird.
+
+==== PostgreSQL
+
+* Java + PostgreSQL → *Customer, Account, Transaction*
+* TypeScript + PostgreSQL → *Shopping-Cart, Authentication*
+* Python + PostgreSQL → *Inventory, Analytics*
+
+==== MongoDB
+
+* TypeScript + MongoDB → *Product, Reviews*
+* Python + MongoDB → *Notification, Recommendation, LogCollector*
+
+==== MySQL
+
+* Java + MySQL → *Invoice*
+* TypeScript + MySQL → *Order*
+
+Damit erfüllt Nexys bewusst die Anforderung, **jede relevante Sprach-/Datenbank-Kombination** praxisnah einzusetzen.
+
+---
+
+=== 9.3 Entscheidungsleitlinien
+
+**Java + PostgreSQL**
+* Finanzielle Domänen
+* Strikte Konsistenz
+* Komplexe Transaktionen
+
+**TypeScript + PostgreSQL/MySQL**
+* Business-nahe Services
+* Hohe Entwicklungs­geschwindigkeit
+* Klare relationale Modelle
+
+**Python + PostgreSQL**
+* Analytics & Reporting
+* Datenaggregation
+* Performance bei Leseoperationen
+
+**Python / TypeScript + MongoDB**
+* Events, Logs, Templates
+* Hohe Schreiblast
+* Flexible oder evolvierende Schemas
+
+---
+
+=== 9.4 Architektonische Regeln
+
+* Jeder Microservice besitzt **genau eine Datenbank**
+* Keine Cross-DB-Zugriffe
+* Kommunikation:
+  * **Synchronous** → GraphQL
+  * **Asynchronous** → Kafka Events
+* Datenbankwechsel pro Service jederzeit möglich
+* Keine Technologie ist global vorgeschrieben
+
+---
+
+=== 9.5 Ergebnis
+
+Durch diese bewusste Aufteilung erreicht Nexys:
+
+* Technologische Neutralität
+* Hohe Wartbarkeit
+* Zukunftssichere Erweiterbarkeit
+* Realistische Enterprise-Abbildung
+* Klare Verantwortlichkeiten pro Service
+
+Die Plattform bleibt dadurch **robust, skalierbar und langfristig evolvierbar**.
+
+© 2025 Omnixys – Modular gedacht. Innovativ verbunden.
