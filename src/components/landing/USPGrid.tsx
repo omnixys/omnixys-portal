@@ -20,6 +20,7 @@ import QueryStatsIcon from '@mui/icons-material/QueryStats';
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import VerifiedIcon from '@mui/icons-material/Verified';
+import GlassCard from '../ui/GlassCard';
 
 const USPs = [
   {
@@ -80,14 +81,19 @@ export default function USPGrid() {
       sx={{
         py: 10,
         px: 2,
-        // backgroundColor: "rgba(255,255,255,0.125)",
-        backgroundColor: 'rgba(168, 62, 180, 0.05)',
-        backdropFilter: 'blur(8px)',
+        backdropFilter: "blur(8px)",
+//         background: `
+//   radial-gradient(
+//     80% 80% at 50% 0%,
+//     rgba(168, 62, 180, 0.18),
+//     rgba(10, 5, 30, 0.85)
+//   )
+// `,
       }}
     >
       <Typography
         variant="h4"
-        color="text.primary"
+        color="#fff"
         align="center"
         fontWeight="bold"
         mb={6}
@@ -95,109 +101,58 @@ export default function USPGrid() {
         Warum OmnixysSphere?
       </Typography>
 
-      {isMobile ? (
-        <Box ref={sliderRef} className="keen-slider">
-          {USPs.map((usp, index) => (
-            <motion.div
-              key={index}
-              className="keen-slider__slide"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.4 }}
-            >
-              <Box
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { md: "1fr 1fr" },
+          gap: 4,
+          maxWidth: 1000,
+          mx: "auto",
+        }}
+      >
+        {USPs.map((usp, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.4 }}
+          >
+            <GlassCard>
+              <Avatar
                 sx={{
-                  p: 4,
-                  m: 1,
-                  borderRadius: 3,
-                  backgroundColor: 'rgba(255,255,255,0.05)',
-                  boxShadow: 2,
-                  display: 'flex',
-                  gap: 2,
-                  alignItems: 'flex-start',
+                  bgcolor: "rgba(255,255,255,0.15)",
+                  color: "#fff",
+                  width: 48,
+                  height: 48,
+                  mt: 0.5,
                 }}
               >
-                <Box sx={{ color: theme.palette.primary.main, mt: 0.5 }}>
-                  <Avatar sx={{ bgcolor: 'primary.main', mx: 'auto', mb: 2 }}>
-                    {usp.icon}
-                  </Avatar>
-                </Box>
-                <Box>
+                {usp.icon}
+              </Avatar>
+
+              <Box>
+                <Typography
+                  variant="h6"
+                  fontWeight={600}
+                  sx={{ color: "#fff" }}
+                >
+                  {usp.title}
+                </Typography>
+
+                {usp.text && (
                   <Typography
-                    color="text.primary"
-                    variant="h6"
-                    fontWeight={600}
-                  >
-                    {usp.title}
-                  </Typography>
-                  <Typography
-                    color="text.primary"
                     variant="body2"
-                    sx={{ mt: 0.5, opacity: 0.8 }}
+                    sx={{ mt: 0.75, color: "rgba(255,255,255,0.75)" }}
                   >
                     {usp.text}
                   </Typography>
-                </Box>
+                )}
               </Box>
-            </motion.div>
-          ))}
-        </Box>
-      ) : (
-        <Box
-          sx={{
-            display: 'grid',
-            gridTemplateColumns: { md: '1fr 1fr' },
-            gap: 4,
-            maxWidth: 1000,
-            mx: 'auto',
-          }}
-        >
-          {USPs.map((usp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.4 }}
-            >
-              <Box
-                sx={{
-                  p: 4,
-                  borderRadius: 3,
-                  backgroundColor: 'rgba(255,255,255,0.05)',
-                  boxShadow: 2,
-                  display: 'flex',
-                  gap: 2,
-                  alignItems: 'flex-start',
-                }}
-              >
-                <Box sx={{ color: theme.palette.primary.main, mt: 0.5 }}>
-                  <Avatar sx={{ bgcolor: 'primary.main', mx: 'auto', mb: 2 }}>
-                    {usp.icon}
-                  </Avatar>
-                </Box>
-                <Box>
-                  <Typography
-                    color="text.primary"
-                    variant="h6"
-                    fontWeight={600}
-                  >
-                    {usp.title}
-                  </Typography>
-                  <Typography
-                    color="text.primary"
-                    variant="body2"
-                    sx={{ mt: 0.5, opacity: 0.8 }}
-                  >
-                    {usp.text}
-                  </Typography>
-                </Box>
-              </Box>
-            </motion.div>
-          ))}
-        </Box>
-      )}
+            </GlassCard>
+          </motion.div>
+        ))}
+      </Box>
     </Box>
   );
 }

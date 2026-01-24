@@ -22,37 +22,38 @@ import {
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import GlassCard from '../ui/GlassCard';
 
 // Timeline-Daten
 const MODULE_DETAILS = [
+  { name: "Social Feed", year: "2025", icon: <DynamicFeedIcon /> },
   {
-    name: 'Shop',
-    year: '2023',
+    name: "Shop",
+    year: "2023",
     icon: <StoreIcon />,
     description:
-      'Unsere Shop-Plattform ermöglicht den einfachen Verkauf digitaler und physischer Produkte – modular, skalierbar und 100 % via GraphQL steuerbar.',
-    image: '/shop.png', // im public-Ordner
+      "Unsere Shop-Plattform ermöglicht den einfachen Verkauf digitaler und physischer Produkte – modular, skalierbar und 100 % via GraphQL steuerbar.",
+    image: "/shop.png", // im public-Ordner
   },
   {
-    name: 'Bank',
-    year: '2023',
+    name: "Bank",
+    year: "2023",
     icon: <AccountBalanceIcon />,
     description:
-      'Das Omnixys-Banking-Modul deckt Giro-, Spar- und Kreditkonten ab und integriert sich nahtlos mit dem Payment- und Transaction-Service.',
-    image: '/shop.png', // im public-Ordner
+      "Das Omnixys-Banking-Modul deckt Giro-, Spar- und Kreditkonten ab und integriert sich nahtlos mit dem Payment- und Transaction-Service.",
+    image: "/shop.png", // im public-Ordner
   },
   {
-    name: 'Immobilien',
-    year: '2023',
+    name: "Immobilien",
+    year: "2023",
     icon: <HomeWorkIcon />,
-    video: '/modules/bank.mp4',
+    video: "/modules/bank.mp4",
   },
-  { name: 'Auktion', year: '2024', icon: <GavelIcon /> },
-  { name: 'Reisen', year: '2024', icon: <TravelExploreIcon /> },
-  { name: 'Kino', year: '2024', icon: <MovieIcon /> },
-  { name: 'Auto', year: '2025', icon: <DirectionsCarIcon /> },
-  { name: 'Aktivitäten', year: '2025', icon: <LocalActivityIcon /> },
-  { name: 'Social Feed', year: '2025', icon: <DynamicFeedIcon /> },
+  { name: "Auktion", year: "2024", icon: <GavelIcon /> },
+  { name: "Reisen", year: "2024", icon: <TravelExploreIcon /> },
+  { name: "Kino", year: "2024", icon: <MovieIcon /> },
+  { name: "Auto", year: "2025", icon: <DirectionsCarIcon /> },
+  { name: "Aktivitäten", year: "2025", icon: <LocalActivityIcon /> },
 ];
 
 export default function FeatureTimeline() {
@@ -76,22 +77,22 @@ export default function FeatureTimeline() {
     <Box sx={{ mt: 10, px: { xs: 2, md: 4 } }}>
       <Typography
         variant="h4"
-        color="text.primary"
-        sx={{ fontWeight: 'bold', mb: 6, textAlign: 'center' }}
+        color="#fff"
+        sx={{ fontWeight: "bold", mb: 6, textAlign: "center" }}
       >
         Feature-Timeline der OmnixysSphere
       </Typography>
       <Box
         sx={{
-          position: 'relative',
-          '::before': {
+          position: "relative",
+          "::before": {
             content: '""',
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             bottom: 0,
-            left: { xs: 'calc(50% - 1px)', md: 'calc(50% - 1px)' },
-            width: '2px',
-            backgroundColor: theme.palette.primary.main,
+            left: { xs: "calc(50% - 1px)", md: "calc(50% - 1px)" },
+            width: "2px",
+            backgroundColor: "rgba(168,62,180,0.35)",
           },
         }}
       >
@@ -103,37 +104,36 @@ export default function FeatureTimeline() {
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
             style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              position: 'relative',
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              position: "relative",
               marginBottom: 60,
             }}
           >
             <Box
               sx={{
-                display: 'flex',
+                display: "flex",
                 flexDirection: {
-                  xs: 'column',
-                  md: index % 2 === 0 ? 'row-reverse' : 'row',
+                  xs: "column",
+                  md: index % 2 === 0 ? "row-reverse" : "row",
                 },
-                alignItems: 'center',
+                alignItems: "center",
                 gap: 3,
-                width: '100%',
-                justifyContent: 'space-between',
+                width: "100%",
+                justifyContent: "space-between",
                 maxWidth: 900,
               }}
             >
-              <Box
+              <GlassCard
+                variant="soft"
                 sx={{
-                  width: { xs: '100%', md: '45%' },
-                  backgroundColor: 'rgba(255,255,255,0.1)',
-                  backdropFilter: 'blur(6px)',
-                  p: 3,
-                  borderRadius: 2,
-                  boxShadow: 2,
-                  textAlign: 'left',
-                  color: '#fff',
+                  width: { xs: "100%", md: "45%" },
+                  cursor: "pointer",
+                }}
+                whileHover={{
+                  y: -4,
+                  boxShadow: "0 0 32px rgba(168,62,180,0.45)",
                 }}
               >
                 {/* Icon-Kreis */}
@@ -141,38 +141,37 @@ export default function FeatureTimeline() {
                   sx={{
                     width: 48,
                     height: 48,
-                    backgroundColor: theme.palette.secondary.main,
-                    color: '#fff',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: 3,
-                    zIndex: 2,
+                    borderRadius: "50%",
+                    background: "rgba(255,255,255,0.18)",
+                    backdropFilter: "blur(8px)",
+                    color: "#fff",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: "0 0 16px rgba(168,62,180,0.4)",
+                    mb: 1,
                   }}
                 >
                   {item.icon}
                 </Box>
-                <Typography color="text.primary" variant="h6" fontWeight={600}>
-                  {item.name}
-                </Typography>
+                <Typography sx={{ color: "#fff" }}>{item.name}</Typography>
                 <Typography
-                  color="text.primary"
+                  sx={{ color: "rgba(255,255,255,0.75)", mt: 0.5 }}
                   variant="body2"
-                  sx={{ opacity: 0.8, mt: 0.5 }}
                 >
                   {item.year} – Teil der modularen Plattform
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    color="secondary"
-                    sx={{ mt: 2 }}
-                    onClick={() => handleOpen(item)}
-                  >
-                    Mehr erfahren
-                  </Button>
                 </Typography>
-              </Box>
+
+                <Button
+                  variant="outlined"
+                  size="small"
+                  color="secondary"
+                  sx={{ mt: 2 }}
+                  onClick={() => handleOpen(item)}
+                >
+                  Mehr erfahren
+                </Button>
+              </GlassCard>
             </Box>
 
             {/* Jahr unterhalb auf kleinen Geräten */}
@@ -180,8 +179,8 @@ export default function FeatureTimeline() {
               variant="caption"
               sx={{
                 mt: 2,
-                color: 'rgba(255,255,255,0.6)',
-                display: { md: 'none' },
+                color: "rgba(255,255,255,0.6)",
+                display: { md: "none" },
               }}
             >
               {item.year}
@@ -189,16 +188,16 @@ export default function FeatureTimeline() {
             {/* Punkt auf Linie */}
             <Box
               sx={{
-                position: 'absolute',
-                top: '50%',
-                left: 'calc(50% - 8px)',
-                transform: 'translateY(-50%)',
+                position: "absolute",
+                top: "50%",
+                left: "calc(50% - 8px)",
+                transform: "translateY(-50%)",
                 width: 16,
                 height: 16,
-                borderRadius: '50%',
-                backgroundColor: 'secondary.main',
-                border: '3px solid white',
-                zIndex: 1,
+                borderRadius: "50%",
+                background: "rgba(255,255,255,0.85)",
+                boxShadow: "0 0 12px rgba(168,62,180,0.6)",
+                zIndex: 2,
               }}
             />
           </motion.div>
@@ -211,9 +210,11 @@ export default function FeatureTimeline() {
         fullWidth
         PaperProps={{
           sx: {
-            backgroundColor: 'rgba(0,0,0,0.85)',
-            color: '#fff',
-            backdropFilter: 'blur(8px)',
+            backgroundColor: "rgba(20,12,40,0.85)",
+            backdropFilter: "blur(16px)",
+            border: "1px solid rgba(255,255,255,0.12)",
+            boxShadow: "0 0 40px rgba(168,62,180,0.45)",
+            color: "#fff",
           },
         }}
       >
@@ -223,10 +224,10 @@ export default function FeatureTimeline() {
             <Box
               sx={{
                 mb: 2,
-                textAlign: 'center',
-                '& img': { borderRadius: 2, maxWidth: '100%' },
-                position: 'relative',
-                width: '100%',
+                textAlign: "center",
+                "& img": { borderRadius: 2, maxWidth: "100%" },
+                position: "relative",
+                width: "100%",
                 height: 400,
               }}
             >
@@ -234,20 +235,20 @@ export default function FeatureTimeline() {
                 src={selectedModule.image}
                 alt={selectedModule.name}
                 fill
-                style={{ objectFit: 'cover', borderRadius: 8 }}
+                style={{ objectFit: "cover", borderRadius: 8 }}
               />
             </Box>
           )}
 
           {selectedModule?.video && (
-            <Box sx={{ mb: 2, textAlign: 'center' }}>
+            <Box sx={{ mb: 2, textAlign: "center" }}>
               <video
                 src={selectedModule.video}
                 autoPlay
                 muted
                 loop
                 playsInline
-                style={{ maxWidth: '100%', borderRadius: 12 }}
+                style={{ maxWidth: "100%", borderRadius: 12 }}
               />
             </Box>
           )}

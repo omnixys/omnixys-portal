@@ -26,6 +26,7 @@ export default function TransitionProvider({
           height: "100vh",
           background:
             "linear-gradient(to bottom, rgb(219 234 254), rgb(254 202 202))", // blue-100 → red-100
+          zIndex: 1300,
         }}
       >
         {/* TOP CURTAIN */}

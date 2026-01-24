@@ -46,4 +46,25 @@ a {
     opacity: 1;
   }
 }
+@keyframes twinkle {
+  from {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
+
+/* Keen Slider Hover Fix */
+.keen-slider {
+  pointer-events: none;
+}
+
+.keen-slider__slide {
+  pointer-events: none;
+}
+
+.keen-slider__slide > * {
+  pointer-events: auto;
+}

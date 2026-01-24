@@ -93,7 +93,7 @@ export default function Navbar() {
             }}
           >
             <Typography color="white" mr={0.5}>
-              Lama
+              Caleb
             </Typography>
             <Box
               sx={{
@@ -107,7 +107,7 @@ export default function Navbar() {
                 justifyContent: "center",
               }}
             >
-              .dev
+              Gyamfi
             </Box>
           </Box>
         </Link>
