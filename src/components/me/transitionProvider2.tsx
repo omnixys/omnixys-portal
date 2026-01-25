@@ -85,7 +85,7 @@ export default function TransitionProvider({
 
         {/* NAVBAR */}
         <Box sx={{ height: 96 }}>
-          {/* <Navbar /> */}
+          <Navbar />
         </Box>
 
         {/* PAGE CONTENT */}

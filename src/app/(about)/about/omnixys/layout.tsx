@@ -19,7 +19,7 @@ export default function AboutLayout({
     <>
       <AboutChapterOverlay title={overlayTitle} />
 
-      <Box sx={{ display: "flex", pt: 10 }}>
+      <Box sx={{ display: "flex", pt: 10}}>
         <AboutSidebar />
 
         <Box sx={{ flex: 1 }}>

@@ -22,6 +22,7 @@ export default function Homepage() {
           display: "flex",
           flexDirection: { xs: "column", lg: "row" },
           px: { xs: 2, sm: 4, md: 6, lg: 10, xl: 24 },
+          // background: '#000',
         }}
       >
         {/* IMAGE CONTAINER */}

@@ -19,11 +19,13 @@ const NAV_ITEMS = [
 
 export default function AboutSidebar() {
   const pathname = usePathname();
-  const [progress, setProgress] = useState<number>();
+
 
   const activeIndex = NAV_ITEMS.findIndex(
     (i) => pathname === i.href,
   );
+
+  const [progress, setProgress] = useState<number>(activeIndex);
 
   useEffect(() => {
   setProgress(activeIndex >= 0 ? (activeIndex + 1) / NAV_ITEMS.length : 0);
@@ -40,6 +42,7 @@ export default function AboutSidebar() {
         pl: 3,
         display: "flex",
         gap: 3,
+        zIndex: 1300,
       }}
     >
       {/* PROGRESS LINE */}
@@ -77,8 +80,7 @@ export default function AboutSidebar() {
         </Typography>
 
         {NAV_ITEMS.map((item, index) => {
-          const active =
-            pathname === item.href;
+          const active = pathname === item.href;
 
           return (
             <motion.div

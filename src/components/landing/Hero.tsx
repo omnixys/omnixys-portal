@@ -4,8 +4,17 @@ import { Box, Typography } from "@mui/material";
 import { motion, useMotionValue, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import HeroContent from "./HeroContent";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
+ const getHeroScale = () => {
+   if (typeof window === "undefined") return [1.4, 1.8, 1.4];
+
+   const h = window.innerHeight;
+
+   if (h < 800) return [1.1, 1.35, 1.1]; // kleine Laptops
+   if (h < 1000) return [1.3, 1.6, 1.3]; // große Laptops
+   return [1.6, 2.1, 1.6]; // Desktops
+ };
 
 const Hero = () => {
   const mouseX = useMotionValue(0);
@@ -35,6 +44,20 @@ const Hero = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
+ 
+
+  const [scaleAnim, setScaleAnim] = useState<[number, number, number]>([
+    1.3, 1.6, 1.3,
+  ]);
+
+  useEffect(() => {
+    const update = () => setScaleAnim(getHeroScale());
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+
   const scale = useTransform(mouseX, [0, 1], [1.04, 1.1]);
 
   const glow = useTransform(
@@ -60,8 +83,7 @@ const Hero = () => {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        height: "100%",
-        minHeight: "100vh",
+        minHeight: "100svh",
         overflow: "hidden",
       }}
     >
@@ -73,12 +95,14 @@ const Hero = () => {
         loop
         sx={{
           position: "absolute",
-          top: "-410px",
+          // top: "-410px",
+          // transform: "rotate(180deg)",
+          top: "50%",
+          transform: "translateY(-97%) rotate(180deg)",
           left: 0,
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          transform: "rotate(180deg)",
           zIndex: 1,
         }}
       >
@@ -87,7 +111,12 @@ const Hero = () => {
 
       {/* Foreground Content */}
       <Box sx={{ position: "relative", zIndex: 20 }}>
-        <Box left={690} top={40} sx={{ position: "relative" }}>
+        {/* Logo */}
+        {/* <Box
+          left={"clamp(47.5%, 45vw, 62%)"}
+          top={"clamp(24px, 6vh, 80px)"}
+          sx={{ position: "relative" }}
+        >
           <motion.div
             style={{
               position: "absolute",
@@ -97,9 +126,7 @@ const Hero = () => {
               filter,
               WebkitFilter: filter,
             }}
-            animate={{
-              scale: [1, 1.5, 1],
-            }}
+            animate={{ scale: scaleAnim }}
             transition={{
               duration: 1.3,
               ease: [0.4, 0.0, 0.2, 1],
@@ -117,7 +144,7 @@ const Hero = () => {
               />
             </motion.div>
           </motion.div>
-        </Box>
+        </Box> */}
         <HeroContent />
       </Box>
     </Box>
