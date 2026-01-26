@@ -11,10 +11,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <AppThemeProvider>
+        {/* <AppThemeProvider> */}
           <CssBaseline />
           {children}
-        </AppThemeProvider>
+        {/* </AppThemeProvider> */}
       </body>
     </html>
   );

@@ -5,7 +5,6 @@ import { ThemeProvider as MuiThemeProvider } from "@mui/material";
 import { darkTheme } from "../../theme/dark";
 import { lightTheme } from "../../theme/light";
 
-
 type ThemeMode = "light" | "dark" | "system";
 
 type ThemeContextType = {

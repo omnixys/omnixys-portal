@@ -1,13 +1,16 @@
 "use client";
 
 import { Box, Grid, Stack, Typography } from "@mui/material";
-import { GlobeStats } from "../components/globe/GlobeStats";
-import { TravelGlobe } from "../components/globe/TravelGlobe";
-import { VISITED_POINTS, ROUTES, GLOBE_STATS } from "../lib/globe/globeMockData";
-import { GlobeView } from "./GlobeView";
-import { MOCK_TRIPS } from "../lib/trips/mockTrips";
 import { CountriesVisitedCard } from "../components/globe/CountriesVisitedCard";
+import { GlobeStats } from "../components/globe/GlobeStats";
+import { GlobeView } from "../components/globe/GlobeView";
 import { TripTimeline } from "../components/globe/TripTimeline";
+import {
+  GLOBE_STATS,
+  ROUTES,
+  VISITED_POINTS,
+} from "../lib/globe/globeMockData";
+import { MOCK_TRIPS } from "../lib/trips/mockTrips";
 
 export default function GlobePage() {
   return (

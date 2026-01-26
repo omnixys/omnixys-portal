@@ -16,19 +16,19 @@ export default function DashboardPage() {
       </Typography>
 
       <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
+        <Grid sx={{ xs: 12, md: 6 }}>
           <BalanceCard />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid sx={{ xs: 12, md: 6 }}>
           <AccountsCard />
         </Grid>
 
-        <Grid item xs={12} lg={8}>
+        <Grid sx={{ xs: 12, lg: 8 }}>
           <CashflowChart />
         </Grid>
 
-        <Grid item xs={12} lg={4}>
+        <Grid sx={{ xs: 12, lg: 8 }}>
           <RecentTransactions />
         </Grid>
       </Grid>

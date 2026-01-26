@@ -1,13 +1,23 @@
 "use client";
 
+import { useEffect, useMemo, useRef } from "react";
+import { GlobeMethods } from "react-globe.gl";
+import { deriveCountries } from "../../lib/globe/deriveCountries";
+import { deriveGlobePoints } from "../../lib/globe/deriveGlobePoints";
+import {
+  deriveGlobeRoutes,
+  getTripYear,
+} from "../../lib/globe/deriveGlobeRoutes";
+import { useGlobeState } from "../../lib/globe/useGlobeState";
+import { Trip } from "../../lib/trips/tripTypes";
 import dynamic from "next/dynamic";
-import { useMemo, useRef, useEffect } from "react";
-import { deriveGlobePoints } from "../lib/globe/deriveGlobePoints";
-import { deriveGlobeRoutes, getTripYear } from "../lib/globe/deriveGlobeRoutes";
-import { useGlobeState } from "../lib/globe/useGlobeState";
-import { Trip } from "../lib/trips/tripTypes";
-import Globe, { GlobeMethods } from "react-globe.gl";
-import { deriveCountries } from "../lib/globe/deriveCountries";
+
+/* ✅ CRITICAL: dynamic import, SSR disabled */
+const Globe = dynamic(
+  () => import("react-globe.gl"),
+  { ssr: false },
+);
+
 
 interface Props {
   trips: Trip[];
@@ -35,13 +45,11 @@ export function GlobeView({ trips }: Props) {
     [filteredTrips],
   );
 
+  const countries = useMemo(
+    () => deriveCountries(filteredTrips),
+    [filteredTrips],
+  );
 
-    const countries = useMemo(
-      () => deriveCountries(filteredTrips),
-      [filteredTrips],
-    );
-  
-  
   useEffect(() => {
     if (!selectedCountry || !globeRef.current) return;
 

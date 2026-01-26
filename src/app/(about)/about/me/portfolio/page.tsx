@@ -69,71 +69,73 @@ export default function PortfolioPage() {
           </Typography>
         </Box>
 
-        <Box
-          sx={{
-            position: "sticky",
-            top: 0,
-            height: "100vh",
-            display: "flex",
-            alignItems: "center",
-            overflow: "hidden",
-            gap: 2,
-          }}
-        >
-          <MotionBox sx={{ display: "flex" }} style={{ x }}>
-            {/* INTRO SLIDE */}
 
-            <Box
-              sx={{
-                height: "100vh",
-                width: "100vw",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                // background:"linear-gradient(to right, rgb(216 180 254), rgb(252 165 165))",
-                bgcolor: "#000",
-              }}
-            />
-            <Box
-              sx={{
-                height: "100vh",
-                width: "100vw",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                // background:"linear-gradient(to right, rgb(216 180 254), rgb(252 165 165))",
-                bgcolor: "#000",
-              }}
-            />
-            <Box
-              sx={{
-                height: "100vh",
-                width: "100vw",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                // background:"linear-gradient(to right, rgb(216 180 254), rgb(252 165 165))",
-                bgcolor: "#000",
-              }}
-            />
+          <Box
+            sx={{
+              position: "sticky",
+              top: 0,
+              height: "100vh",
+              display: "flex",
+              alignItems: "center",
+              overflow: "hidden",
+              gap: 2,
+            }}
+          >
+            <MotionBox sx={{ display: "flex" }} style={{ x }}>
+              {/* INTRO SLIDE */}
 
-            {/* PROJECT SLIDES */}
-            {PROJECTS.map((item) => (
-              <ProjectSlide key={item.id} project={item} />
-            ))}
+              <Box
+                sx={{
+                  height: "100vh",
+                  width: "100vw",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  // background:"linear-gradient(to right, rgb(216 180 254), rgb(252 165 165))",
+                  bgcolor: "#000",
+                }}
+              />
+              <Box
+                sx={{
+                  height: "100vh",
+                  width: "100vw",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  // background:"linear-gradient(to right, rgb(216 180 254), rgb(252 165 165))",
+                  bgcolor: "#000",
+                }}
+              />
+              <Box
+                sx={{
+                  height: "100vh",
+                  width: "100vw",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  // background:"linear-gradient(to right, rgb(216 180 254), rgb(252 165 165))",
+                  bgcolor: "#000",
+                }}
+              />
 
-            <Box
-              sx={{
-                height: "100vh",
-                width: "100vw",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                // background:"linear-gradient(to right, rgb(216 180 254), rgb(252 165 165))",
-                bgcolor: "#000",
-              }}
-            />
-          </MotionBox>
+              {/* PROJECT SLIDES */}
+              {PROJECTS.map((item) => (
+                <ProjectSlide key={item.id} project={item} />
+              ))}
+
+              <Box
+                sx={{
+                  height: "100vh",
+                  width: "100vw",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  // background:"linear-gradient(to right, rgb(216 180 254), rgb(252 165 165))",
+                  bgcolor: "#000",
+                }}
+              />
+            </MotionBox>
+
         </Box>
       </Box>
 

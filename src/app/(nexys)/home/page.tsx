@@ -7,26 +7,26 @@ import 'keen-slider/keen-slider.min.css';
 import { useRef } from 'react';
 
 import MotionWrapper from '@/components/common/MotionWrapper';
-import AppVideoPreview from '@/components/landing/AppVideoPreview';
-import ChatWidget from '@/components/landing/ChatWidget';
-import CompetitorComparison from '@/components/landing/CompetitorComparison';
+import AppVideoPreview from '@/components/landing2/AppVideoPreview';
+import ChatWidget from '@/components/landing2/ChatWidget';
+import CompetitorComparison from '@/components/landing2/CompetitorComparison';
 import FeatureTimeline from '@/components/landing/FeatureTimeline';
-import HeroSection from '@/components/landing/HeroSection';
+import HeroSection from '@/components/landing2/HeroSection';
 import KPISection from '@/components/landing/KPISection';
 import ModuleCarousel from '@/components/landing/ModuleCarousel';
 import NewsletterSection from '@/components/landing/NewsletterSection';
-import StepProgressNav from '@/components/landing/ProgressBar';
+import StepProgressNav from '@/components/landing2/ProgressBar';
 import USPGrid from '@/components/landing/USPGrid';
 // import StickyNavbar from "@/components/landing/StickyNavbar";
 import ScrollDownArrow from '@/components/common/ScrollDownArrow';
 import StickyCTA from '@/components/common/StickyCTA';
-import AppDownloadBadges from '@/components/landing/AppDownloadBadges';
+import AppDownloadBadges from '@/components/landing2/AppDownloadBadges';
 import BlogPreview from '@/components/landing/BlogPreview';
-import EventsTeaser from '@/components/landing/EventsTeaser';
-import ProgressBanner from '@/components/landing/ProgressBanner';
-import ScrollSpyNavigation from '@/components/landing/ScrollSpyNavigation';
-import Testimonials from '@/components/landing/Testimonials';
-import TrustBadges from '@/components/landing/TrustBadges';
+import EventsTeaser from '@/components/landing2/EventsTeaser';
+import ProgressBanner from '@/components/landing2/ProgressBanner';
+import ScrollSpyNavigation from '@/components/landing2/ScrollSpyNavigation';
+import Testimonials from '@/components/landing2/Testimonials';
+import TrustBadges from '@/components/landing2/TrustBadges';
 
 const MODULES = [
   'Shop',

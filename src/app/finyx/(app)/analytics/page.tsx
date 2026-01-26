@@ -16,19 +16,19 @@ export default function AnalyticsPage() {
       </Typography>
 
       <Grid container spacing={3}>
-        <Grid item xs={12} lg={4}>
+        <Grid sx={{ xs: 12, lg: 4 }}>
           <CategoryDonut />
         </Grid>
 
-        <Grid item xs={12} lg={8}>
+        <Grid sx={{ xs: 12, lg: 8 }}>
           <MonthlyTrend />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid sx={{ xs: 12, md: 6 }}>
           <BudgetOverview />
         </Grid>
 
-        <Grid item xs={12} md={6}>
+        <Grid sx={{ xs: 12, md: 6 }}>
           <InsightsCard />
         </Grid>
       </Grid>

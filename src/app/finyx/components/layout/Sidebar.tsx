@@ -21,16 +21,16 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 
 const navItems = [
-  { label: "Dashboard", icon: <Home />, path: "/finance/dashboard" },
-  { label: "Accounts", icon: <CreditCard />, path: "/finance/accounts" },
-  { label: "Transactions", icon: <ListAlt />, path: "/finance/transactions" },
-  { label: "Transfer", icon: <Send />, path: "/finance/transfer" },
-  { label: "Analytics", icon: <PieChart />, path: "/finance/analytics" },
+  { label: "Dashboard", icon: <Home />, path: "/finyx/dashboard" },
+  { label: "Accounts", icon: <CreditCard />, path: "/finyx/accounts" },
+  { label: "Transactions", icon: <ListAlt />, path: "/finyx/transactions" },
+  { label: "Transfer", icon: <Send />, path: "/finyx/transfer" },
+  { label: "Analytics", icon: <PieChart />, path: "/finyx/analytics" },
 ];
 
 const secondaryItems = [
-  { label: "Notifications", icon: <Notifications />, path: "/finance/notifications" },
-  { label: "Settings", icon: <Settings />, path: "/finance/settings" },
+  { label: "Notifications", icon: <Notifications />, path: "/finyx/notifications" },
+  { label: "Settings", icon: <Settings />, path: "/finyx/settings/security" },
 ];
 
 export default function Sidebar() {
