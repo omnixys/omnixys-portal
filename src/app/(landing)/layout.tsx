@@ -8,10 +8,13 @@ import StarsCanvas from "../../components/landing/StarBackground";
 
 const inter = Inter({ subsets: ["latin"] });
 
+
 export const metadata: Metadata = {
-  title: "Space Portfolio",
-  description: "This is my portfolio",
+  title: "Omnixys",
+  description:
+    "Omnixys is a modular, event-driven platform for building scalable, secure, and domain-driven software systems.",
 };
+
 
 const theme = createTheme({
   palette: {

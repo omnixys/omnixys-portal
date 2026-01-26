@@ -9,8 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Lama Dev Portfolio App",
-  description: "The best animated portfolio page",
+  title: "About Me · Portfolio",
+  description:
+    "Personal portfolio showcasing my background, experience, and selected projects in software development.",
 };
 
 const theme = createTheme({
