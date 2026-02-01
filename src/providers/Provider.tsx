@@ -12,6 +12,7 @@ import DateProvider from "./DateProvider";
 import { DeviceProvider } from "./DeviceProvider";
 import SwipeBackProvider from "./SwipeBackProvider";
 import ThemeModeProvider from "./ThemeModeProvider";
+import RootProvider from "./RootProvider";
 
 type ProviderProps = { children: React.ReactNode };
 
@@ -49,26 +50,17 @@ export default function Provider({ children }: ProviderProps) {
   };
 
   return (
-    <DeviceProvider>
-      <ThemeModeProvider>
-        <CssBaseline />
-        <AuthProvider>
-          <ActiveEventProvider>
-            <DateProvider>
-              <SwipeBackProvider>
-                {/* ALWAYS keep hook tree alive */}
-                <div style={{ opacity: hydrated ? 1 : 0 }}>
-                  {showOnboarding && (
-                    <OnboardingModal onFinish={finishOnboarding} />
-                  )}
+    <RootProvider>
+      <DateProvider>
+        <SwipeBackProvider>
+          {/* ALWAYS keep hook tree alive */}
+          <div style={{ opacity: hydrated ? 1 : 0 }}>
+            {showOnboarding && <OnboardingModal onFinish={finishOnboarding} />}
 
-                  {isAuthRoute ? children : <AppShell>{children}</AppShell>}
-                </div>
-              </SwipeBackProvider>
-            </DateProvider>
-          </ActiveEventProvider>
-        </AuthProvider>
-      </ThemeModeProvider>
-    </DeviceProvider>
+            {isAuthRoute ? children : <AppShell>{children}</AppShell>}
+          </div>
+        </SwipeBackProvider>
+      </DateProvider>
+    </RootProvider>
   );
 }
