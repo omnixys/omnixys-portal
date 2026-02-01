@@ -7,7 +7,7 @@ import AdminStats from "./components/AdminStats";
 import EmptyStatsState from "./components/EmptyStatsState";
 import GuestStats from "./components/GuestStats";
 
-import EventsNavBar from "@/components/checkpoint/eventList/EventsNavBar";
+import EventsNavBar from "@/components/eventList/EventsNavBar";
 import { useActiveEvent } from "@/providers/ActiveEventProvider";
 import { adminStatsMock, guestStatsMock } from "./mock/eventStats.mock";
 

@@ -7,11 +7,11 @@ import { motion } from "framer-motion";
 import { useCallback, useState } from "react";
 
 // Hook to read eventId from the URL
-import CreateTicketDialog from "@/components/checkpoint/ticketList/CreateTicketDialog";
-import DeleteTicketDialog from "@/components/checkpoint/ticketList/DeleteTicketDialog";
-import RotateNonceDialog from "@/components/checkpoint/ticketList/RotateNonceDialog";
-import TicketHeader from "@/components/checkpoint/ticketList/TicketHeader";
-import TicketList from "@/components/checkpoint/ticketList/TicketList";
+import CreateTicketDialog from "@/components/ticketList/CreateTicketDialog";
+import DeleteTicketDialog from "@/components/ticketList/DeleteTicketDialog";
+import RotateNonceDialog from "@/components/ticketList/RotateNonceDialog";
+import TicketHeader from "@/components/ticketList/TicketHeader";
+import TicketList from "@/components/ticketList/TicketList";
 import {
   CREATE_TICKET,
   REVOKE_TICKET,
@@ -24,7 +24,7 @@ import {
 } from "@/types/ticket/ticket-graphql-query.type";
 import { getLogger } from "@/utils/logger";
 import { useParams, useRouter } from "next/navigation";
-import { useAuth } from "../../../../../providers/AuthProvider";
+import { useAuth } from "@/providers/AuthProvider";
 
 export default function TicketPage() {
   const logger = getLogger("TicketPage");
@@ -84,7 +84,7 @@ export default function TicketPage() {
   }, [rotateNonce, eventId]);
 
     if (!isAuthenticated) {
-      router.push("/checkpoint");
+      router.push("/checkpoint/");
     }
   /** -----------------------------------------------------------
    * Loading & Error States

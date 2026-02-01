@@ -48,7 +48,7 @@ export default function ChangePasswordCard() {
 
       // Redirect after short delay
       setTimeout(() => {
-        router.push("/checkpoint/me");
+        router.push("/me");
       }, 1000);
     },
     onError(error) {

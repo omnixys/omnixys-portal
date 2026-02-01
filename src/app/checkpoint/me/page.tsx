@@ -22,19 +22,27 @@ export default function MePage() {
       <Card>
         <CardContent>
           <Typography variant="h6">
-            {user?.firstName} {user?.lastName}
+            {user?.personalInfo.firstName} {user?.personalInfo.lastName}
           </Typography>
           <Typography color="text.secondary">@{user?.username}</Typography>
-          <Typography color="text.secondary">{user?.email}</Typography>
+          <Typography color="text.secondary">
+            {user?.personalInfo.email}
+          </Typography>
         </CardContent>
       </Card>
 
       <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
-        <Button variant="contained" onClick={() => router.push("/checkpoint/me/profile")}>
+        <Button
+          variant="contained"
+          onClick={() => router.push("/checkpoint/me/profile")}
+        >
           Edit Profile
         </Button>
 
-        <Button variant="outlined" onClick={() => router.push("/checkpoint/me/security")}>
+        <Button
+          variant="outlined"
+          onClick={() => router.push("/checkpoint/me/security")}
+        >
           Security & Password
         </Button>
 

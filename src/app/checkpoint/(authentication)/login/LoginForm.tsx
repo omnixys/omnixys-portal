@@ -21,8 +21,8 @@ import React, { JSX } from "react";
 
 import { LoginInput } from "@/types/authentication/auth-input.type";
 import { AuthManager } from "@/utils/AuthManager";
-import { AppleButton } from "@/components/checkpoint/apple/AppleButton";
-import { AppleCard } from "@/components/checkpoint/apple/AppleCard";
+import { AppleButton } from "@/components/apple/AppleButton";
+import { AppleCard } from "@/components/apple/AppleCard";
 import { useAuth } from "@/providers/AuthProvider";
 import { useRouter } from "next/navigation";
 

@@ -1,25 +1,25 @@
 "use client";
 
-import BackToEventDetail from "@/components/checkpoint/invitationList/button/BackToEventDetail";
-import { mockAlerts } from "@/components/checkpoint/security/mock/mockAlerts";
-import { mockConnectivity } from "@/components/checkpoint/security/mock/mockConnectivity";
+import BackToEventDetail from "@/components/invitationList/button/BackToEventDetail";
+import { mockAlerts } from "@/components/security/mock/mockAlerts";
+import { mockConnectivity } from "@/components/security/mock/mockConnectivity";
 import {
   mockEntries,
   mockExits,
-} from "@/components/checkpoint/security/mock/mockEntries";
-import { mockFeed } from "@/components/checkpoint/security/mock/mockFeed";
-import { mockGates } from "@/components/checkpoint/security/mock/mockGates";
-import { mockGuestsInside } from "@/components/checkpoint/security/mock/mockGuestsInside";
-import { mockScanAnalytics } from "@/components/checkpoint/security/mock/mockScanAnalytics";
-import { mockStatus } from "@/components/checkpoint/security/mock/mockStatus";
-import { mockTools } from "@/components/checkpoint/security/mock/mockTools";
-import { mockVerifyTicket } from "@/components/checkpoint/security/mock/mockVerifyTicket";
-import { mockWarningAnalytics } from "@/components/checkpoint/security/mock/mockWarningAnalytics";
-import CenterPanel from "@/components/checkpoint/security/panels/CenterPanel";
-import LeftPanel from "@/components/checkpoint/security/panels/LeftPanel";
-import RightPanel from "@/components/checkpoint/security/panels/RightPanel";
-import SecurityTabs from "@/components/checkpoint/security/SecurityTabs";
-import VisionOSStickyHeader from "@/components/checkpoint/security/VisionOSStickyHeader";
+} from "@/components/security/mock/mockEntries";
+import { mockFeed } from "@/components/security/mock/mockFeed";
+import { mockGates } from "@/components/security/mock/mockGates";
+import { mockGuestsInside } from "@/components/security/mock/mockGuestsInside";
+import { mockScanAnalytics } from "@/components/security/mock/mockScanAnalytics";
+import { mockStatus } from "@/components/security/mock/mockStatus";
+import { mockTools } from "@/components/security/mock/mockTools";
+import { mockVerifyTicket } from "@/components/security/mock/mockVerifyTicket";
+import { mockWarningAnalytics } from "@/components/security/mock/mockWarningAnalytics";
+import CenterPanel from "@/components/security/panels/CenterPanel";
+import LeftPanel from "@/components/security/panels/LeftPanel";
+import RightPanel from "@/components/security/panels/RightPanel";
+import SecurityTabs from "@/components/security/SecurityTabs";
+import VisionOSStickyHeader from "@/components/security/VisionOSStickyHeader";
 import { useDevice } from "@/providers/DeviceProvider";
 import { Box, Grid, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
@@ -42,7 +42,7 @@ export default function SecurityDashboardPage(): JSX.Element {
         const { isAuthenticated } = useAuth();
 
       if (!isAuthenticated) {
-        router.push("/checkpoint");
+        router.push("/checkpoint/");
       }
   
   return (

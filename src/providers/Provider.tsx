@@ -2,16 +2,16 @@
 
 import React from "react";
 
+import AppShell from "@/components/layout/AppShell";
+import OnboardingModal from "@/components/onboarding/OnboardingModal";
 import { CssBaseline } from "@mui/material";
 import { usePathname } from "next/navigation";
-import AppShell from "@/components/checkpoint/layout/AppShell";
-import OnboardingModal from "@/components/checkpoint/onboarding/OnboardingModal";
 import { ActiveEventProvider } from "./ActiveEventProvider";
 import { AuthProvider } from "./AuthProvider";
 import DateProvider from "./DateProvider";
 import { DeviceProvider } from "./DeviceProvider";
 import SwipeBackProvider from "./SwipeBackProvider";
-import ThemeModeProvider from "./theme-mode";
+import ThemeModeProvider from "./ThemeModeProvider";
 
 type ProviderProps = { children: React.ReactNode };
 

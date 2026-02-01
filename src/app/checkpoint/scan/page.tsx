@@ -1,6 +1,6 @@
 "use client";
-import ActiveEventGuard from "@/components/checkpoint/guard/ActiveEventGuard";
-import ScanContent from "@/components/checkpoint/scan/ScanContent";
+import ActiveEventGuard from "@/components/guard/ActiveEventGuard";
+import ScanContent from "@/components/scan/ScanContent";
 
 export default function Page() {
   return (

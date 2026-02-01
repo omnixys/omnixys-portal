@@ -24,15 +24,11 @@ import { useParams, useRouter } from "next/navigation";
 import TuneIcon from "@mui/icons-material/Tune";
 
 import { useSecurityGuests } from "./useSecurityGuests";
-import { useDevice } from "../../../../../providers/DeviceProvider";
-import BackToEventDetail from "../../../../../components/checkpoint/invitationList/button/BackToEventDetail";
-import { useAuth } from "../../../../../providers/AuthProvider";
-import EmblaCarousel from "./EmblaCarousel";
-import { EmblaOptionsType } from "embla-carousel";
+import { useDevice } from "@/providers/DeviceProvider";
+import BackToEventDetail from "@/components/invitationList/button/BackToEventDetail";
+import { useAuth } from "@/providers/AuthProvider";
 import { VisionEmblaCarousel } from "./VisionCarousel";
-import { de } from 'date-fns/locale';
-import { config } from "process";
-import RefreshArcButton from "../../../../../components/checkpoint/invitationList/RefreshArcButton";
+import RefreshArcButton from "@/components/invitationList/RefreshArcButton";
 import { red } from "@mui/material/colors";
 
 /* ------------------------------------------------------------------ */
@@ -72,7 +68,7 @@ export default function SecurityGuestListPage() {
   /* ------------------------------------------------------------------ */
 
   useEffect(() => {
-    if (!isAuthenticated) router.push("/checkpoint");
+    if (!isAuthenticated) router.push("/checkpoint/");
   }, [isAuthenticated, router]);
 
   /* ------------------------------------------------------------------ */

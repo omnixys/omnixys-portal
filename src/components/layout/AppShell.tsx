@@ -1,38 +1,21 @@
-'use client';
+"use client";
 
-import { Box, Toolbar, useMediaQuery, useTheme } from '@mui/material';
-import AnalyticsSidebar from '../AnalyticsSidebar';
-import Navbar from '../Navbar';
+import React from "react";
+import { useDevice } from "@/providers/DeviceProvider";
 
-const drawerWidth = 260;
+import AppShellMobile from "./AppShell.mobile";
+import AppShellTablet from "./AppShell.tablet";
+import AppShellDesktop from "./AppShell.desktop";
 
-export default function AppShell({ children }: { children: React.ReactNode }) {
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+export default function AppShell({ children }: {
+  children: React.ReactNode;
+}) {
+  const { device } = useDevice();
+
+  if (device === "mobile") return <AppShellMobile>{children}</AppShellMobile>;
+  if (device === "tablet") return <AppShellTablet>{children}</AppShellTablet>;
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        minHeight: '100vh',
-        backgroundColor: theme.palette.background.default,
-      }}
-    >
-      <Navbar />
-      <AnalyticsSidebar />
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          p: 3,
-          ml: isMobile ? 0 : `${drawerWidth}px`,
-          transition: 'margin 0.3s ease',
-        }}
-      >
-        {/* Abstand für feste Navbar */}
-        <Toolbar />
-        {children}
-      </Box>
-    </Box>
+      <AppShellDesktop>{children}</AppShellDesktop>
   );
 }

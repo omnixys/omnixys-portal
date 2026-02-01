@@ -5,21 +5,21 @@ import { Box, CircularProgress, Stack, Typography } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
 
-import EventActions from "@/components/checkpoint/eventDetails/EventActions";
-import EventHeaderA from "@/components/checkpoint/eventDetails/EventHeaderA";
-import EventHeaderB from "@/components/checkpoint/eventDetails/EventHeaderB";
-import EventHeaderC from "@/components/checkpoint/eventDetails/EventHeaderC";
-import EventHeaderD from "@/components/checkpoint/eventDetails/EventHeaderD";
-import EventTabContent from "@/components/checkpoint/eventDetails/EventTabContent";
-import EventTabs from "@/components/checkpoint/eventDetails/EventTabs";
-import EventVariantToggle from "@/components/checkpoint/eventDetails/EventVariantToggle";
-import BackToListButton from "@/components/checkpoint/utils/BackToListButton";
+import EventActions from "@/components/eventDetails/EventActions";
+import EventHeaderA from "@/components/eventDetails/EventHeaderA";
+import EventHeaderB from "@/components/eventDetails/EventHeaderB";
+import EventHeaderC from "@/components/eventDetails/EventHeaderC";
+import EventHeaderD from "@/components/eventDetails/EventHeaderD";
+import EventTabContent from "@/components/eventDetails/EventTabContent";
+import EventTabs from "@/components/eventDetails/EventTabs";
+import EventVariantToggle from "@/components/eventDetails/EventVariantToggle";
+import BackToListButton from "@/components/utils/BackToListButton";
 import {
   EventByIdRequest,
   EventByIdResult,
 } from "@/types/event/event-query-graphql.type";
 import { EVENT_BY_ID } from "@/graphql/event/event-query.graphql";
-import { useAuth } from "../../../../providers/AuthProvider";
+import { useAuth } from "@/providers/AuthProvider";
 
 export default function PremiumEventDetailPage() {
   const router = useRouter();
@@ -39,7 +39,7 @@ export default function PremiumEventDetailPage() {
   const [description, setDescription] = React.useState("");
 
   if (!isAuthenticated) {
-      router.push('/checkpoint')
+      router.push('/')
     }
   
   if (loading || !data) {
@@ -78,7 +78,7 @@ export default function PremiumEventDetailPage() {
       }}
     >
       {/* Back Button */}
-      <BackToListButton backTo="/checkpoint/event" />
+      <BackToListButton backTo="/event" />
 
       {/* Variant Switch */}
       <EventVariantToggle variant={variant} onChange={setVariant} />

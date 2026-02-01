@@ -2,7 +2,7 @@
 
 import React, { JSX } from "react";
 import LoginForm from "./LoginForm";
-import { AppleNavBar } from "@/components/checkpoint/apple/AppleNavBar";
+import { AppleNavBar } from "@/components/apple/AppleNavBar";
 
 export default function LoginPage(): JSX.Element {
   return (

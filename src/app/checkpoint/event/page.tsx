@@ -3,12 +3,12 @@
 import { Box, Stack } from "@mui/material";
 import React from "react";
 
-import EventList from "@/components/checkpoint/eventList/EventList";
-import EventsHeader from "@/components/checkpoint/eventList/EventsHeader";
-import EventsNavBar from "@/components/checkpoint/eventList/EventsNavBar";
-import GlobalSearch from "@/components/checkpoint/eventList/GlobalSearch";
-import PullToRefreshWrapper from "@/components/checkpoint/utils/PullToRefreshWrapper";
-import ViewModeToggle from "@/components/checkpoint/utils/ViewModeToggle";
+import EventList from "@/components/eventList/EventList";
+import EventsHeader from "@/components/eventList/EventsHeader";
+import EventsNavBar from "@/components/eventList/EventsNavBar";
+import GlobalSearch from "@/components/eventList/GlobalSearch";
+import PullToRefreshWrapper from "@/components/utils/PullToRefreshWrapper";
+import ViewModeToggle from "@/components/utils/ViewModeToggle";
 import type { EventListHandle, EventsFilter } from "@/types/event/event.type";
 import { toLocal } from "@/utils/date";
 

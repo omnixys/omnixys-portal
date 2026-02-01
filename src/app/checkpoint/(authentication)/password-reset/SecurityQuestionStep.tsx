@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import { useQuery, useMutation } from "@apollo/client/react";
 import { GET_SECURITY_QUESTIONS, VERIFY_SECURITY_QUESTIONS } from "./graphql";
-import { handleGraphQLError } from "../../../../utils/graphqlHandler.error";
+import { handleGraphQLError } from "@/utils/graphqlHandler.error";
 import { motion } from "framer-motion";
 import LockRoundedIcon from "@mui/icons-material/LockRounded";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";

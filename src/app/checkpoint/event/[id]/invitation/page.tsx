@@ -3,22 +3,22 @@
 import { Box, Stack } from "@mui/material";
 import { useRef } from "react";
 
-import BackToTopButton from "@/components/checkpoint/invitationList/button/BackToTopButton";
-import InvitationCardView from "@/components/checkpoint/invitationList/cards/InvitationCardView";
-import BulkSendInvitationDialog from "@/components/checkpoint/invitationList/dialogs/BulkSendInvitationDialog";
-import InvitationCreateDialog from "@/components/checkpoint/invitationList/dialogs/InvitationCreateDialog";
-import InvitationDetailDialog from "@/components/checkpoint/invitationList/dialogs/InvitationDetailDialog";
-import InvitationImportDialog from "@/components/checkpoint/invitationList/dialogs/InvitationImportDialog";
+import BackToTopButton from "@/components/invitationList/button/BackToTopButton";
+import InvitationCardView from "@/components/invitationList/cards/InvitationCardView";
+import BulkSendInvitationDialog from "@/components/invitationList/dialogs/BulkSendInvitationDialog";
+import InvitationCreateDialog from "@/components/invitationList/dialogs/InvitationCreateDialog";
+import InvitationDetailDialog from "@/components/invitationList/dialogs/InvitationDetailDialog";
+import InvitationImportDialog from "@/components/invitationList/dialogs/InvitationImportDialog";
 import {
   UseInvitationLogicReturn,
   useInvitationLogic,
-} from "@/components/checkpoint/invitationList/hooks/useInvitationLogic";
-import { useScrollHeader } from "@/components/checkpoint/invitationList/hooks/useScrollHeader";
-import { useScrollTopButton } from "@/components/checkpoint/invitationList/hooks/useScrollTopButton";
-import InvitationActionsMobile from "@/components/checkpoint/invitationList/InvitationActionsMobile";
-import InvitationBulkBar from "@/components/checkpoint/invitationList/InvitationBulkBar";
-import InvitationHeaderBar from "@/components/checkpoint/invitationList/InvitationHeaderBar";
-import InvitationTable from "@/components/checkpoint/invitationList/InvitationTable";
+} from "@/components/invitationList/hooks/useInvitationLogic";
+import { useScrollHeader } from "@/components/invitationList/hooks/useScrollHeader";
+import { useScrollTopButton } from "@/components/invitationList/hooks/useScrollTopButton";
+import InvitationActionsMobile from "@/components/invitationList/InvitationActionsMobile";
+import InvitationBulkBar from "@/components/invitationList/InvitationBulkBar";
+import InvitationHeaderBar from "@/components/invitationList/InvitationHeaderBar";
+import InvitationTable from "@/components/invitationList/InvitationTable";
 import { useDevice } from "@/providers/DeviceProvider";
 import { useParams } from "next/navigation";
 

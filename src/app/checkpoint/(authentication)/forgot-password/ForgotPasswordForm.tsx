@@ -46,7 +46,7 @@ export default function ForgotPasswordForm(): JSX.Element {
         variables: {
           input: {
             email,
-            resetUrl: `${window.location.origin}/checkpoint/password-reset`,
+            resetUrl: `${window.location.origin}/password-reset`,
           },
         },
       });

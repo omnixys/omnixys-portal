@@ -5,7 +5,7 @@ import { Box, IconButton, Stack, Typography, useTheme } from "@mui/material";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 
-import TicketCard from "@/components/checkpoint/ticket/TicketCard";
+import TicketCard from "@/components/ticket/TicketCard";
 
 export default function TicketPage() {
   const { id } = useParams<{ id: string }>();
@@ -25,7 +25,7 @@ export default function TicketPage() {
         {/* Header */}
         <Stack direction="row" alignItems="center" spacing={1} sx={{ mb: 1 }}>
           <Link
-            href="/checkpoint/unlock"
+            href="/unlock"
             aria-label="Back"
             style={{ display: "flex" }}
           >

@@ -21,8 +21,8 @@ import {
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
 
-import SeatRenameConflictDialog from "@/components/checkpoint/seatList/dialogs/SeatRenameConflictDialog";
-import { useSeats } from "@/components/checkpoint/seatList/useSeats";
+import SeatRenameConflictDialog from "@/components/seatList/dialogs/SeatRenameConflictDialog";
+import { useSeats } from "@/components/seatList/useSeats";
 
 import {
   BULK_RENAME_SECTIONS,

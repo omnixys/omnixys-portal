@@ -12,15 +12,15 @@ import {
 import Link from "next/link";
 import { JSX } from "react";
 
-import { useActiveEvent } from "../../providers/ActiveEventProvider";
-import { useAuth } from "../../providers/AuthProvider";
-import { useDevice } from "../../providers/DeviceProvider";
+import { useActiveEvent } from "@/providers/ActiveEventProvider";
+import { useAuth } from "@/providers/AuthProvider";
 
 import ConfirmationNumberIcon from "@mui/icons-material/ConfirmationNumber";
 import EventIcon from "@mui/icons-material/Event";
 import QrCodeScannerIcon from "@mui/icons-material/QrCodeScanner";
 
-const EVENT_ID = process.env.EVENT_ID_EVENT_ID || "cmk6vasuo000nh8ijz4lhyotn";
+const EVENT_ID =
+  process.env.NEXT_PUBLIC_EVENT_ID || "cmk6vasuo000nh8ijz4lhyotn";
 export default function HomePage(): JSX.Element {
   const theme = useTheme();
   const { isAuthenticated, user } = useAuth();
@@ -104,15 +104,15 @@ export default function HomePage(): JSX.Element {
     // role === "SECURITY"
     //   ? {
     //       label: "Scanner starten",
-    //       href: "/checkpointscan",
+    //       href: "/checkpoint/scan",
     //       icon: <QrCodeScannerIcon sx={{ fontSize: 44 }} />,
     //     }
-      // :
-  {
-          label: "Meine Events",
-          href: "/checkpoint/event",
-          icon: <EventIcon sx={{ fontSize: 44 }} />,
-        };
+    // :
+    {
+      label: "Meine Events",
+      href: "/checkpoint/event",
+      icon: <EventIcon sx={{ fontSize: 44 }} />,
+    };
 
   const secondaryAction =
     role === "GUEST"
@@ -122,12 +122,12 @@ export default function HomePage(): JSX.Element {
           icon: <ConfirmationNumberIcon />,
         }
       : role === "SECURITY"
-      ? {
-          label: "Scanner starten",
-          href: "/checkpoint/scan",
-          icon: <QrCodeScannerIcon />,
-        }
-      : null;
+        ? {
+            label: "Scanner starten",
+            href: "/checkpoint/scan",
+            icon: <QrCodeScannerIcon />,
+          }
+        : null;
 
   return (
     <Box sx={{ px: 3, py: 4, maxWidth: 860, mx: "auto" }}>
@@ -140,7 +140,7 @@ export default function HomePage(): JSX.Element {
             color: theme.palette.omnixys.textPrimary,
           }}
         >
-          Willkommen, {user?.firstName}
+          Willkommen, {user?.personalInfo.firstName}
         </Typography>
 
         <Typography

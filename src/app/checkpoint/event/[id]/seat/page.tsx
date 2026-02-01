@@ -1,22 +1,22 @@
 "use client";
 
-import BackToEventDetail from "@/components/checkpoint/invitationList/button/BackToEventDetail";
-import CollapsingSeatHeader from "@/components/checkpoint/seatList/CollapsingSeatHeader";
-import MapManager from "@/components/checkpoint/seatList/mapManager/MapManager";
-import SeatDetailDrawer from "@/components/checkpoint/seatList/SeatDetailDrawer";
-import SeatEditDialog from "@/components/checkpoint/seatList/SeatEditDialog";
-import SeatFilters from "@/components/checkpoint/seatList/SeatFilters";
-import SeatImportButton from "@/components/checkpoint/seatList/SeatImportButton";
-import SeatImportDialog from "@/components/checkpoint/seatList/SeatImportDialog";
-import { useSeatDetailDrawer } from "@/components/checkpoint/seatList/useSeatDetailDrawer";
-import { useSeats } from "@/components/checkpoint/seatList/useSeats";
+import BackToEventDetail from "@/components/invitationList/button/BackToEventDetail";
+import CollapsingSeatHeader from "@/components/seatList/CollapsingSeatHeader";
+import MapManager from "@/components/seatList/mapManager/MapManager";
+import SeatDetailDrawer from "@/components/seatList/SeatDetailDrawer";
+import SeatEditDialog from "@/components/seatList/SeatEditDialog";
+import SeatFilters from "@/components/seatList/SeatFilters";
+import SeatImportButton from "@/components/seatList/SeatImportButton";
+import SeatImportDialog from "@/components/seatList/SeatImportDialog";
+import { useSeatDetailDrawer } from "@/components/seatList/useSeatDetailDrawer";
+import { useSeats } from "@/components/seatList/useSeats";
 import { getLogger } from "@/utils/logger";
 import { EditOutlined } from "@mui/icons-material";
 import { alpha, Box, Button, Stack } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import React from "react";
-import { useAuth } from "../../../../../providers/AuthProvider";
-import { useActiveEvent } from "../../../../../providers/ActiveEventProvider";
+import { useAuth } from "@/providers/AuthProvider";
+import { useActiveEvent } from "@/providers/ActiveEventProvider";
 
 export default function SeatsPage() {
         const { isAuthenticated } = useAuth();
@@ -52,7 +52,7 @@ export default function SeatsPage() {
   const [importOpen, setImportOpen] = React.useState(false);
 
     if (!isAuthenticated) {
-      router.push("/checkpoint");
+      router.push("/checkpoint/");
     }
 
   return (

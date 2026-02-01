@@ -305,7 +305,7 @@ export default function NewPasswordStep({ id }: Props): JSX.Element {
 
           <Button
             variant="text"
-            onClick={() => router.push("/checkpoint/login")}
+            onClick={() => router.replace("/checkpoint/login")}
           >
             ← Back to login
           </Button>

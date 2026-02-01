@@ -1,4 +1,4 @@
-import ErrorView from "@/components/checkpoint/ui/ErrorView";
+import ErrorView from "@/components/ui/ErrorView";
 
 export default function NotFoundPage() {
   return (
@@ -6,7 +6,7 @@ export default function NotFoundPage() {
       title="Seite nicht gefunden"
       message="Die angeforderte Seite existiert nicht oder wurde verschoben."
       actions={[
-        { href: "/checkpoint", label: "Zur Startseite", variant: "contained" },
+        { href: "/checkpoint/", label: "Zur Startseite", variant: "contained" },
         // { href: "/login", label: "Zum Dashboard", variant: "outlined" },
       ]}
     />

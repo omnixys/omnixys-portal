@@ -48,7 +48,7 @@ export default function LandingPage() {
                 </Button>
                 <Button
                   component={Link}
-                  href="/checkpoint/my-qr"
+                  href="/my-qr"
                   size="large"
                   fullWidth
                   variant="outlined"
@@ -85,19 +85,19 @@ export default function LandingPage() {
               Schnelleinstieg für Team
             </Typography>
             <Stack direction={{ xs: "column", sm: "row" }} spacing={1.5}>
-              <Button component={Link} href="/checkpoint/scan" variant="text">
+              <Button component={Link} href="/scan" variant="text">
                 Zur Scanner‑Ansicht
               </Button>
               <Button
                 component={Link}
-                href="/checkpoint/security"
+                href="/security"
                 variant="text"
               >
                 Security‑Dashboard
               </Button>
               <Button
                 component={Link}
-                href="/checkpoint/invitations"
+                href="/invitations"
                 variant="text"
               >
                 Einladungen

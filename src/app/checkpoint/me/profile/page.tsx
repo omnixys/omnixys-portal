@@ -88,7 +88,7 @@ export default function ProfilePage() {
 
       // Redirect after short confirmation
       setTimeout(() => {
-        router.push("/checkpoint/me");
+        router.push("/me");
       }, 1500);
     },
 

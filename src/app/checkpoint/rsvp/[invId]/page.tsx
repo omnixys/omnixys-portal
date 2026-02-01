@@ -1,6 +1,6 @@
 "use client";
 
-import RsvpContainer from "@/components/checkpoint/rsvp/RsvpContainer";
+import RsvpContainer from "@/components/rsvp/RsvpContainer";
 import { getLogger } from "@/components/../utils/logger";
 import { useParams } from "next/navigation";
 

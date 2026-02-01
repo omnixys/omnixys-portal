@@ -1,7 +1,7 @@
 "use client";
 
-import ActiveEventGuard from "@/components/checkpoint/guard/ActiveEventGuard";
-import MySeatContent from "@/components/checkpoint/mySeat/MySeatContent";
+import ActiveEventGuard from "@/components/guard/ActiveEventGuard";
+import MySeatContent from "@/components/mySeat/MySeatContent";
 import { JSX } from "react";
 
 /**

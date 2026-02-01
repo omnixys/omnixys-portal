@@ -1,11 +1,10 @@
+import Providers from "@/providers/Provider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import { ReactNode } from "react";
-import Providers from "@/providers/Provider";
-import "@/app/globals.css";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/next";
-import StartupVisionPro from "../../components/checkpoint/startup/StartupVisionPro";
+// import { SpeedInsights } from "@vercel/speed-insights/next";
+// import { Analytics } from "@vercel/analytics/next";
+import StartupVisionPro from "@/components/startup/StartupVisionPro";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,9 +40,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="de" className={inter.variable}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <SpeedInsights />
-        <Analytics />
-       <StartupVisionPro /> 
+        {/* <SpeedInsights />
+        <Analytics /> */}
+        <StartupVisionPro />
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -1,9 +1,9 @@
 import { Box, Typography, Stack, Button } from "@mui/material";
 import { useMutation, useQuery } from "@apollo/client/react";
-import { GET_NOTIFICATION_BY_ID } from "../../../../graphql/notification/notification.query";
-import dayjs from "../../../../lib/dayjs";
-import { MARK_AS_UN_READ, ARCHIVE_NOTIFICATION, UN_ARCHIVE, DELETE_NOTIFICATION } from "../../../../graphql/notification/notification.mutation";
-import { Notification } from "../../../../types/notification/notification.type";
+import { GET_NOTIFICATION_BY_ID } from "@/graphql/notification/notification.query";
+import dayjs from "@/lib/dayjs";
+import { MARK_AS_UN_READ, ARCHIVE_NOTIFICATION, UN_ARCHIVE, DELETE_NOTIFICATION } from "@/graphql/notification/notification.mutation";
+import { Notification } from "@/types/notification/notification.type";
 
 export default function MailDetailPane({
   notificationId,

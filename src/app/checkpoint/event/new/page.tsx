@@ -1,23 +1,23 @@
 "use client";
 
-import { AppleNavBar } from "@/components/checkpoint/apple/AppleNavBar";
+import { AppleNavBar } from "@/components/apple/AppleNavBar";
 import { Alert, Box, Snackbar, Stack } from "@mui/material";
 import { JSX, useState } from "react";
 
-import { AppleProgress } from "@/components/checkpoint/newEvent/EventSteps.style";
-import Step1Basics from "@/components/checkpoint/newEvent/Step1Basics";
-import Step2Time from "@/components/checkpoint/newEvent/Step2Time";
-import Step3Advanced from "@/components/checkpoint/newEvent/Step3Advanced";
-import Step4Summary from "@/components/checkpoint/newEvent/Step4Summary";
-import Step5Success from "@/components/checkpoint/newEvent/Step5Success";
+import { SlideTransition } from "@/app/checkpoint/(authentication)/register/SlideTransition";
 import { CREATE_EVENT } from "@/components/../graphql/event/event-mutation.graphql";
 import {
   CreateEventRequest,
   CreateEventResult,
 } from "@/components/../types/event/event-mutation-graphql.type";
+import { AppleProgress } from "@/components/newEvent/EventSteps.style";
+import Step1Basics from "@/components/newEvent/Step1Basics";
+import Step2Time from "@/components/newEvent/Step2Time";
+import Step3Advanced from "@/components/newEvent/Step3Advanced";
+import Step4Summary from "@/components/newEvent/Step4Summary";
+import Step5Success from "@/components/newEvent/Step5Success";
 import { useMutation } from "@apollo/client/react";
 import { useRouter } from "next/navigation";
-import { SlideTransition } from "@/app/checkpoint/(authentication)/register/SlideTransition";
 
 export default function CreateEventPage(): JSX.Element {
   const router = useRouter();
@@ -49,7 +49,7 @@ export default function CreateEventPage(): JSX.Element {
 
   function update<K extends keyof typeof form>(
     key: K,
-    value: (typeof form)[K]
+    value: (typeof form)[K],
   ) {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
@@ -102,7 +102,7 @@ export default function CreateEventPage(): JSX.Element {
 
   return (
     <Box sx={{ p: { xs: 2, sm: 3 }, maxWidth: 600, mx: "auto" }}>
-      <AppleNavBar title="Neues Event" onBack={() => router.push("/checkpoint/event")} />
+      <AppleNavBar title="Neues Event" onBack={() => router.push("/event")} />
 
       <AppleProgress step={step} total={5} />
 

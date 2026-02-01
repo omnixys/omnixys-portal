@@ -1,7 +1,7 @@
 // /app/(auth)/signup/page.tsx
 "use client";
 
-import { AppleLoadingOverlay } from "@/components/checkpoint/apple/AppleLoadingOverlay";
+import { AppleLoadingOverlay } from "@/components/apple/AppleLoadingOverlay";
 import { useAuth } from "@//providers/AuthProvider";
 import { UserSignUpInput } from "@/types/authentication/auth-input.type";
 import {
@@ -10,7 +10,7 @@ import {
   SignUpStep3,
 } from "@/types/authentication/auth.type";
 import { AuthManager } from "@/utils/AuthManager";
-import { AppleNavBar } from "@/components/checkpoint/apple/AppleNavBar";
+import { AppleNavBar } from "@/components/apple/AppleNavBar";
 import { Box, Stack } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { JSX, useState } from "react";
@@ -91,7 +91,7 @@ export default function SignUpPage(): JSX.Element {
       // Refetch user in global state
       await auth.refetchMe();
 
-      router.push("/");
+      router.push("/checkpoint/");
     } catch (err) {
       console.error("Signup failed:", err);
     } finally {
@@ -105,7 +105,7 @@ export default function SignUpPage(): JSX.Element {
 
   return (
     <Box sx={{ p: 2 }}>
-      <AppleNavBar title="Registrieren" onBack={() => router.push("/")} />
+      <AppleNavBar title="Registrieren" onBack={() => router.push("/checkpoint/")} />
 
       {/* Top progress bar (iOS style) */}
       <AppleProgress step={step} total={3} />

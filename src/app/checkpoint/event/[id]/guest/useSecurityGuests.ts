@@ -5,10 +5,10 @@ import { useMemo } from "react";
 import { useQuery } from "@apollo/client/react";
 import { SeatVM, SecurityGuestVM } from "./types";
 
-import { GET_TICKETS_BY_EVENT } from "../../../../../graphql/ticket/ticket.query";
-import { GET_USER_LIST } from "../../../../../graphql/user/user-query.graphql";
-import { GET_SEAT_LIST } from "../../../../../graphql/seat/seat-query.graphql";
-import { Ticket } from "../../../../../types/ticket/ticket.type";
+import { GET_TICKETS_BY_EVENT } from "@/graphql/ticket/ticket.query";
+import { GET_USER_LIST } from "@/graphql/user/user-query.graphql";
+import { GET_SEAT_LIST } from "@/graphql/seat/seat-query.graphql";
+import { Ticket } from "@/types/ticket/ticket.type";
 
 export function useSecurityGuests(eventId: string) {
   // 1️⃣ Tickets

@@ -1,10 +1,10 @@
 "use client";
 
+import { autoSave } from "@/app/checkpoint/event/[id]/block3/components/edit/autoSave";
+import { useLayoutActions } from "@/app/checkpoint/event/[id]/block3/components/edit/layoutActions2";
 import { useTheme } from "@mui/material/styles";
 import { useEffect, useRef } from "react";
 import { Circle, Group, Text } from "react-konva";
-import { autoSave } from "@/app/checkpoint/event/[id]/block3/components/edit/autoSave";
-import { useLayoutActions } from "@/app/checkpoint/event/[id]/block3/components/edit/layoutActions2";
 import TableLayer from "./TableLayer";
 import { enablePulseAnimation } from "./utils/pulse";
 import { glowColor } from "./utils/themeGlow";

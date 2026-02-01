@@ -5,9 +5,6 @@ export const ME = gql`
     me {
       id
       username
-      firstName
-      lastName
-      email
       ticketIds
       invitationIds
       createdAt
@@ -16,7 +13,11 @@ export const ME = gql`
         id
         number
         type
-        userId
+      }
+      personalInfo {
+        email
+        firstName
+        lastName
       }
     }
   }

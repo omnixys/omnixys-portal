@@ -1,12 +1,12 @@
 "use client";
 
-import AddSectionButton from "@/components/checkpoint/description/AddSectionButton";
-import DndContextWrapper from "@/components/checkpoint/description/dnd/DndContextWrapper";
-import SortableSection from "@/components/checkpoint/description/dnd/SortableSection";
+import AddSectionButton from "@/components/description/AddSectionButton";
+import DndContextWrapper from "@/components/description/dnd/DndContextWrapper";
+import SortableSection from "@/components/description/dnd/SortableSection";
 import { EventRole } from "@/types/event/event-enum.type";
 import { useEffect, useRef, useState } from "react";
-// import EditorPanel from "@/components/checkpoint/../../components/description/editor/EditorPanel";
-import SectionRenderer from "@/components/checkpoint/description/section/SectionRenderer";
+// import EditorPanel from "@/components/../../components/description/editor/EditorPanel";
+import SectionRenderer from "@/components/description/section/SectionRenderer";
 import { useActiveEvent } from "@/providers/ActiveEventProvider";
 import {
   EventDescriptionBlock,

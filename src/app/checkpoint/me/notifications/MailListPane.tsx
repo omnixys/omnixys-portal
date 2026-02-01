@@ -1,11 +1,11 @@
-import { Stack, Divider, Box, FormControlLabel, Checkbox, TextField, InputAdornment, MenuItem, Select } from "@mui/material";
+import { Stack, Divider, Box, TextField, InputAdornment, MenuItem, Select } from "@mui/material";
 import { useMutation, useQuery } from "@apollo/client/react";
 import { MY_NOTIFICATIONS } from "@/graphql/notification/notification.query";
 import MailListItem from "./MailListItem";
 import SelectionActionBar from "./SelectionActionBar";
 import { useMailSelection } from "./useMailSelection";
 import { Notification } from "@/types/notification/notification.type";
-import { MARK_AS_READ_BULK, MARK_AS_UN_READ_BULK, ARCHIVE_BULK, DELETE_NOTIFICATION_BULK } from "../../../../graphql/notification/notification.mutation";
+import { MARK_AS_READ_BULK, MARK_AS_UN_READ_BULK, ARCHIVE_BULK, DELETE_NOTIFICATION_BULK } from "@/graphql/notification/notification.mutation";
 import { useState } from "react";
 import FilterListIcon from "@mui/icons-material/FilterList";
 

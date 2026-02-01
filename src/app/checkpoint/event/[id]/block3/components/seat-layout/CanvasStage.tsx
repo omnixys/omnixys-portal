@@ -1,16 +1,16 @@
 "use client";
 
+import { canvasStore } from "@/app/checkpoint/event/[id]/block3/components/edit/canvasStore";
+import InspectorPanel from "@/app/checkpoint/event/[id]/block3/components/edit/InspectorPanel";
+import { useLayoutActions } from "@/app/checkpoint/event/[id]/block3/components/edit/layoutActions2";
+import { applyDiffToState } from "@/app/checkpoint/event/[id]/block3/components/edit/patchEngine";
+import { useLayoutDiff } from "@/app/checkpoint/event/[id]/block3/components/edit/useLayoutDiff";
 import RedoIcon from "@mui/icons-material/Redo";
 import UndoIcon from "@mui/icons-material/Undo";
 import { IconButton, Stack } from "@mui/material";
 import { useParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Layer, Stage } from "react-konva";
-import { canvasStore } from "@/app/checkpoint/event/[id]/block3/components/edit/canvasStore";
-import InspectorPanel from "@/app/checkpoint/event/[id]/block3/components/edit/InspectorPanel";
-import { useLayoutActions } from "@/app/checkpoint/event/[id]/block3/components/edit/layoutActions2";
-import { applyDiffToState } from "@/app/checkpoint/event/[id]/block3/components/edit/patchEngine";
-import { useLayoutDiff } from "@/app/checkpoint/event/[id]/block3/components/edit/useLayoutDiff";
 import SectionLayer from "./SectionLayer";
 
 export default function CanvasStage({ sections: initialSections }) {

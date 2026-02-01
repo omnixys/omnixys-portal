@@ -1,10 +1,10 @@
 "use client";
 
+import { autoSave } from "@/app/checkpoint/event/[id]/block3/components/edit/autoSave";
+import { useLayoutActions } from "@/app/checkpoint/event/[id]/block3/components/edit/layoutActions2";
 import { useTheme } from "@mui/material/styles";
 import { useEffect, useRef } from "react";
 import { Circle, Group, Rect, Text } from "react-konva";
-import { autoSave } from "@/app/checkpoint/event/[id]/block3/components/edit/autoSave";
-import { useLayoutActions } from "@/app/checkpoint/event/[id]/block3/components/edit/layoutActions2";
 import SeatLayer from "./SeatLayer";
 import { enablePulseAnimation } from "./utils/pulse";
 import { glowColor } from "./utils/themeGlow";
@@ -216,29 +216,29 @@ export default function TableLayer({
           shape === "circle"
             ? circleRadius * 2
             : shape === "row"
-            ? rowWidth - 50
-            : gridWidth
+              ? rowWidth - 50
+              : gridWidth
         }
         height={
           shape === "circle"
             ? circleRadius * 2
             : shape === "row"
-            ? rowHeight
-            : gridHeight / 2
+              ? rowHeight
+              : gridHeight / 2
         }
         x={
           shape === "circle"
             ? -circleRadius
             : shape === "row"
-            ? -(rowWidth - 50) / 2
-            : -gridWidth / 2
+              ? -(rowWidth - 50) / 2
+              : -gridWidth / 2
         }
         y={
           shape === "circle"
             ? -circleRadius
             : shape === "row"
-            ? -rowHeight / 2
-            : -(gridHeight / 2) / 2
+              ? -rowHeight / 2
+              : -(gridHeight / 2) / 2
         }
       />
 
