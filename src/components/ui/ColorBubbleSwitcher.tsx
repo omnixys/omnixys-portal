@@ -1,7 +1,6 @@
 "use client";
 
 import { useThemeMode } from "@/providers/ThemeModeProvider";
-import { OmnixysColorScheme } from "@/themes/theme1";
 import {
   Box,
   Fade,
@@ -11,6 +10,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useRef, useState } from "react";
+import { OmnixysColorScheme } from "../../themes/paletteTypes";
 
 // -------------------------------------------------------------
 // Available colors
@@ -31,13 +31,17 @@ const bubbleColor: Record<OmnixysColorScheme, string> = {
   blue: "#2563EB",
 };
 
+type Direction = "horizontal" | "vertical";
+
 // -------------------------------------------------------------
 // VisionOS Floating Color Picker
 // -------------------------------------------------------------
-export default function ColorBubbleSwitcher() {
+export default function ColorBubbleSwitcher({
+  direction = "horizontal",
+}: {
+  direction?: Direction;
+}) {
   const { scheme, setScheme } = useThemeMode();
-
-  const theme = useTheme();
   const isTouch = useMediaQuery("(hover: none)");
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [open, setOpen] = useState(false);
@@ -86,6 +90,7 @@ export default function ColorBubbleSwitcher() {
   // Close picker
   // -------------------------------------------------------------
   const handleClose = () => setOpen(false);
+  const effectiveDirection: Direction = isTouch ? "horizontal" : direction;
 
   return (
     <>
@@ -136,12 +141,12 @@ export default function ColorBubbleSwitcher() {
           },
         }}
         anchorOrigin={{
-          vertical: "center",
-          horizontal: "right",
+          vertical: effectiveDirection === "vertical" ? "bottom" : "center",
+          horizontal: effectiveDirection === "vertical" ? "center" : "right",
         }}
         transformOrigin={{
-          vertical: "center",
-          horizontal: "left",
+          vertical: effectiveDirection === "vertical" ? "top" : "center",
+          horizontal: effectiveDirection === "vertical" ? "center" : "left",
         }}
       >
         {/* Buttons */}
@@ -150,6 +155,8 @@ export default function ColorBubbleSwitcher() {
             sx={{
               display: "flex",
               gap: 1.5,
+              flexDirection:
+                effectiveDirection === "vertical" ? "column" : "row",
             }}
           >
             {schemes.map((s) => (

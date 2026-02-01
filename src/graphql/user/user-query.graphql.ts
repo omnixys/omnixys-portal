@@ -5,19 +5,72 @@ export const ME = gql`
     me {
       id
       username
-      ticketIds
-      invitationIds
       createdAt
       updatedAt
       phoneNumbers {
         id
         number
         type
+        infoId
+        label
+        isPrimary
       }
       personalInfo {
+        id
         email
         firstName
         lastName
+        birthDate
+        gender
+        maritalStatus
+      }
+      userType
+      status
+      addresses {
+        id
+        street
+        houseNumber
+        zipCode
+        city
+        state
+        country
+        additionalInfo
+      }
+      contacts {
+        id
+        userId
+        contactId
+        relationship
+        withdrawalLimit
+        emergency
+        startDate
+        endDate
+      }
+      customer {
+        id
+        tierLevel
+        subscribed
+        state
+        interests
+        contactOptions
+      }
+      employee {
+        id
+        department
+        position
+        role
+        salary
+        hireDate
+        isExternal
+      }
+      securityQuestions {
+        id
+        question
+        answerHash
+        attempts
+        lockedAt
+        createdAt
+        updatedAt
       }
     }
   }
