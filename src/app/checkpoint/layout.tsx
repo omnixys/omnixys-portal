@@ -40,8 +40,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="de" className={inter.variable}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {/* <SpeedInsights />
-        <Analytics /> */}
         <StartupVisionPro />
         <Providers>{children}</Providers>
       </body>

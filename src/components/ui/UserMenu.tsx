@@ -34,7 +34,8 @@ import ColorBubbleSwitcher from "./ColorBubbleSwitcher";
  */
 type EventRole = "ADMIN" | "SECURITY" | "GUEST";
 
-export default function UserMenu(): JSX.Element | null {
+
+export default function UserMenu({ logoutPath }: { logoutPath: string }): JSX.Element | null {
   const router = useRouter();
   const { device } = useDevice();
 
@@ -74,7 +75,7 @@ export default function UserMenu(): JSX.Element | null {
   const doLogout = async () => {
     handleClose();
     await logout();
-    router.replace("/checkpoint/login");
+    router.replace(logoutPath);
   };
 
   return (

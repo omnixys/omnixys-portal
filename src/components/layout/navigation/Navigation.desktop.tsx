@@ -84,7 +84,11 @@ const items = createNavigation(role, activeEvent?.id);
                 title={collapsed ? item.label : undefined}
                 key={item.path}
                 disabled={item.disabled}
-                selected={isActiveNavItem(pathname, item.path, items.map(i => i.path))}
+                selected={isActiveNavItem(
+                  pathname,
+                  item.path,
+                  items.map((i) => i.path),
+                )}
                 onClick={() => router.push("/" + item.path)}
                 sx={{
                   position: "relative",
@@ -100,7 +104,11 @@ const items = createNavigation(role, activeEvent?.id);
                     width: 4,
                     height: "60%",
                     borderRadius: 999,
-                    backgroundColor: isActiveNavItem(pathname, item.path, items.map(i => i.path))
+                    backgroundColor: isActiveNavItem(
+                      pathname,
+                      item.path,
+                      items.map((i) => i.path),
+                    )
                       ? "primary.main"
                       : "transparent",
                     // transition:
@@ -108,7 +116,11 @@ const items = createNavigation(role, activeEvent?.id);
 
                     transition: "transform 260ms cubic-bezier(.4,0,.2,1)",
                     transformOrigin: "center",
-                    transform: isActiveNavItem(pathname, item.path, items.map(i => i.path))
+                    transform: isActiveNavItem(
+                      pathname,
+                      item.path,
+                      items.map((i) => i.path),
+                    )
                       ? "translateY(-50%) scaleY(1)"
                       : "translateY(-50%) scaleY(0)",
                   },
@@ -128,17 +140,33 @@ const items = createNavigation(role, activeEvent?.id);
                 <ListItemIcon
                   sx={{
                     minWidth: 36,
-                    color: isActiveNavItem(pathname, item.path, items.map(i => i.path))
+                    color: isActiveNavItem(
+                      pathname,
+                      item.path,
+                      items.map((i) => i.path),
+                    )
                       ? getRoleColor(role)
                       : "text.secondary",
                     transition: "color 0.25s ease",
                   }}
                 >
                   <motion.div
-                    key={isActiveNavItem(pathname, item.path, items.map(i => i.path)) ? "active" : "inactive"}
+                    key={
+                      isActiveNavItem(
+                        pathname,
+                        item.path,
+                        items.map((i) => i.path),
+                      )
+                        ? "active"
+                        : "inactive"
+                    }
                     initial={{ scale: 1 }}
                     animate={
-                      isActiveNavItem(pathname, item.path, items.map(i => i.path))
+                      isActiveNavItem(
+                        pathname,
+                        item.path,
+                        items.map((i) => i.path),
+                      )
                         ? { scale: [1, 1.15, 1] }
                         : { scale: 1 }
                     }
@@ -184,7 +212,7 @@ const items = createNavigation(role, activeEvent?.id);
 
         <ColorBubbleSwitcher />
         <ThemeToggleButton />
-        <UserMenu />
+        <UserMenu logoutPath={"/checkpoint/login"} />
       </Box>
     </Box>
   );

@@ -59,8 +59,8 @@ export default function AppShellTablet({
           }}
         >
           <ThemeToggleButton />
-                <ColorBubbleSwitcher />
-          <UserMenu />
+          <ColorBubbleSwitcher />
+          <UserMenu logoutPath={"/checkpoint/login"} />
         </Box>
 
         {/* inhalt scrollt unabhängig */}

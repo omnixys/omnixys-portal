@@ -21,10 +21,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <CssBaseline />
-
         <Box
           sx={{
             minHeight: "100vh",
@@ -44,7 +40,5 @@ export default function RootLayout({
             <Footer />
           </RootProviders>
         </Box>
-      </body>
-    </html>
   );
 }

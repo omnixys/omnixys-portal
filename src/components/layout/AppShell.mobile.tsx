@@ -49,7 +49,7 @@ export default function AppShellMobile({
                 <EventSelectorMobileButton onOpen={() => setOpen(true)} />
               )}
               <ThemeToggleButton />
-              <UserMenu />
+              <UserMenu logoutPath={"/checkpoint/login"} />
             </>
           }
         />

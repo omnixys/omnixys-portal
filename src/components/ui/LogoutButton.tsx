@@ -6,14 +6,14 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import { IconButton, Tooltip } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
-export default function LogoutButton(){
+export default function LogoutButton({path}: {path: string}){
   const router = useRouter();
   const { logout } = useAuth();
 
   const onClick = async () => {
     try {
       await logout();
-      router.replace('/checkpoint/login');
+      router.replace(path);
     } catch (e) {
       // Optional: in-app toast
       console.error(e);

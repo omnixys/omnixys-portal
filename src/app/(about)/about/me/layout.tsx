@@ -26,15 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        {/* <ThemeProvider theme={theme}> */}
-          <CssBaseline />
           <TransitionProvider>
             {children}
           </TransitionProvider>
-        {/* </ThemeProvider> */}
-      </body>
-    </html>
   );
 }

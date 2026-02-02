@@ -16,30 +16,12 @@ export const metadata: Metadata = {
 };
 
 
-
-const theme = createTheme({
-  palette: {
-    mode: "dark",
-    background: {
-      default: "#030014",
-    },
-  },
-  typography: {
-    fontFamily: inter.style.fontFamily,
-  },
-});
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        {/* <ThemeProvider theme={theme}> */}
-        <CssBaseline />
-
         <Box
           sx={{
             minHeight: "100vh",
@@ -59,8 +41,5 @@ export default function RootLayout({
 
           {/* <Footer /> */}
         </Box>
-        {/* </ThemeProvider> */}
-      </body>
-    </html>
   );
 }

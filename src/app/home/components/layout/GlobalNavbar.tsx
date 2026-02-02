@@ -143,7 +143,7 @@ export default function GlobalNavbar({
           <LanguageSwitcher />
           <ThemeToggleButton />
           <ColorBubbleSwitcher direction={"vertical"} />
-          <UserMenu />
+          <UserMenu logoutPath={"/login"} />
         </Stack>
       </Toolbar>
     </AppBar>
