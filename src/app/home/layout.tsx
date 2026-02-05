@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 import React from "react";
 import StarsCanvas from "@/components/landing/StarBackground";
 import RootProviders from "@/providers/RootProvider";
-import Footer from "./components/Footer";
+import Footer from "@/components/home/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 

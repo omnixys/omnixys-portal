@@ -22,24 +22,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-        <Box
-          sx={{
-            minHeight: "100vh",
-            // backgroundColor: "palette.background",
-            backgroundColor: "#030014",
-            // overflowY: "auto",
-            // overflowX: "hidden",
-            position: "relative",
-          }}
-        >
-          {/* Global FX / Layout */}
-          <StarsCanvas />
-          <Navbar />
+    <Box>
+      <CssBaseline />
 
-          {/* Page Content */}
-          {children}
+      <Box
+        sx={{
+          minHeight: "100vh",
+          // backgroundColor: "palette.background",
+          backgroundColor: "#030014",
+          // overflowY: "auto",
+          // overflowX: "hidden",
+          position: "relative",
+        }}
+      >
+        {/* Global FX / Layout */}
+        <StarsCanvas />
+        <Navbar />
 
-          {/* <Footer /> */}
-        </Box>
+        {/* Page Content */}
+        {children}
+
+        {/* <Footer /> */}
+      </Box>
+    </Box>
   );
 }

@@ -100,5 +100,121 @@
       "missingCredentials": "Username or password is missing",
       "loginFailed": "Login failed. Please try again."
     }
+  },
+  "user": {
+    "type": {
+      "customer": "Customer",
+      "employee": "Employee",
+      "guest": "Guest"
+    },
+    "role": {
+      "admin": "Administrator",
+      "security": "Security",
+      "user": "User",
+      "guest": "Guest"
+    },
+    "status": {
+      "active": "Active",
+      "disabled": "Disabled",
+      "deleted": "Deleted",
+      "inactive": "Inactive",
+      "blocked": "Blocked",
+      "closed": "Closed"
+    }
+  },
+
+  "personal": {
+    "marital": {
+      "single": "Single",
+      "married": "Married",
+      "divorced": "Divorced",
+      "widowed": "Widowed"
+    },
+    "phone": {
+      "mobile": "Mobile",
+      "whatsapp": "WhatsApp",
+      "private": "Private",
+      "work": "Work",
+      "home": "Home",
+      "other": "Other"
+    }
+  },
+
+  "relationship": {
+    "family": "Family",
+    "friend": "Friend",
+    "partner": "Partner",
+    "colleague": "Colleague",
+    "businessPartner": "Business Partner",
+    "relative": "Relative",
+    "parent": "Parent",
+    "sibling": "Sibling",
+    "child": "Child",
+    "cousin": "Cousin",
+    "other": "Other"
+  },
+
+  "interest": {
+    "sports": "Sports",
+    "music": "Music",
+    "travel": "Travel",
+    "technology": "Technology",
+    "investments": "Investments",
+    "savingAndFinance": "Saving & Finance",
+    "creditAndDebt": "Credit & Debt",
+    "realEstate": "Real Estate",
+    "insurance": "Insurance",
+    "sustainableFinance": "Sustainable Finance"
+  },
+
+  "contactOption": {
+    "email": "Email",
+    "phone": "Phone",
+    "sms": "SMS",
+    "whatsapp": "WhatsApp",
+    "letter": "Letter"
+  },
+    "common":{
+  "labels": {
+    "userType": "User type",
+    "role": "Role",
+    "status": "Status",
+    "department": "Department",
+    "position": "Position",
+    "employment": "Employment",
+    "customerTier": "Customer tier",
+    "subscribed": "Subscribed"
+  },
+  "values": {
+    "yes": "Yes",
+    "no": "No",
+    "internal": "Internal",
+    "external": "External"
+  }
+},
+  "profile": {
+    "role": {
+      "titles": {
+        "employee": "Employment details",
+        "customer": "Customer details",
+        "guest": "Guest access",
+        "default": "Role details"
+      },
+      "employee": {
+        "department": "Department",
+        "position": "Position",
+        "employment": "Employment",
+        "internal": "Internal",
+        "external": "External",
+        "hireDate": "Hire date"
+      },
+      "customer": {
+        "interests": "Interests",
+        "noInterests": "No interests specified"
+      },
+      "guest": {
+        "note": "This is a guest account with limited, temporary access."
+      }
+    }
   }
 }

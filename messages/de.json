@@ -94,5 +94,129 @@
       "missingCredentials": "Benutzername oder Passwort fehlt",
       "loginFailed": "Anmeldung fehlgeschlagen. Bitte erneut versuchen."
     }
+  },
+  "user": {
+    "type": {
+      "customer": "Kunde",
+      "employee": "Mitarbeiter",
+      "guest": "Gast"
+    },
+    "role": {
+      "admin": "Administrator",
+      "security": "Sicherheit",
+      "user": "Benutzer",
+      "guest": "Gast"
+    },
+    "status": {
+      "active": "Aktiv",
+      "disabled": "Deaktiviert",
+      "deleted": "Gelöscht",
+      "inactive": "Inaktiv",
+      "blocked": "Gesperrt",
+      "closed": "Geschlossen"
+    }
+  },
+
+  "personal": {
+    "marital": {
+      "single": "Ledig",
+      "married": "Verheiratet",
+      "divorced": "Geschieden",
+      "widowed": "Verwitwet"
+    },
+    "phone": {
+      "mobile": "Mobil",
+      "whatsapp": "WhatsApp",
+      "private": "Privat",
+      "work": "Arbeit",
+      "home": "Zuhause",
+      "other": "Sonstiges"
+    }
+  },
+
+  "relationship": {
+    "family": "Familie",
+    "friend": "Freund",
+    "partner": "Partner",
+    "colleague": "Kollege",
+    "businessPartner": "Geschäftspartner",
+    "relative": "Verwandter",
+    "parent": "Elternteil",
+    "sibling": "Geschwister",
+    "child": "Kind",
+    "cousin": "Cousin",
+    "other": "Sonstiges"
+  },
+
+  "interest": {
+    "sports": "Sport",
+    "music": "Musik",
+    "travel": "Reisen",
+    "technology": "Technologie",
+    "investments": "Investitionen",
+    "savingAndFinance": "Sparen & Finanzen",
+    "creditAndDebt": "Kredite & Schulden",
+    "realEstate": "Immobilien",
+    "insurance": "Versicherungen",
+    "sustainableFinance": "Nachhaltige Finanzen"
+  },
+
+  "contactOption": {
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "sms": "SMS",
+    "whatsapp": "WhatsApp",
+    "letter": "Brief"
+  },
+  "common":{
+  "labels": {
+    "userType": "Benutzertyp",
+    "role": "Rolle",
+    "status": "Status",
+    "department": "Abteilung",
+    "position": "Position",
+    "employment": "Anstellung",
+    "customerTier": "Kundentyp",
+    "subscribed": "Abonniert"
+  },
+  "values": {
+    "yes": "Ja",
+    "no": "Nein",
+    "internal": "Intern",
+    "external": "Extern"
   }
+},
+
+"customer": {
+  "interests": "Interessen",
+  "noInterests": "Keine Interessen angegeben",
+  "moreInterests": "weitere Interessen"
+},
+
+  "profile": {
+    "role": {
+      "titles": {
+        "employee": "Beschäftigungsdetails",
+        "customer": "Kundendetails",
+        "guest": "Gastzugang",
+        "default": "Rolleninformationen"
+      },
+      "employee": {
+        "department": "Abteilung",
+        "position": "Position",
+        "employment": "Anstellung",
+        "internal": "Intern",
+        "external": "Extern",
+        "hireDate": "Eintrittsdatum"
+      },
+      "customer": {
+        "interests": "Interessen",
+        "noInterests": "Keine Interessen angegeben"
+      },
+      "guest": {
+        "note": "Dies ist ein Gastkonto mit eingeschränktem, temporärem Zugriff."
+      }
+    }
+  }
+
 }

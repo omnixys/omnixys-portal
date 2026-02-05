@@ -15,12 +15,28 @@ export const metadata: Metadata = {
     "Omnixys is a modular, event-driven platform for building scalable, secure, and domain-driven software systems.",
 };
 
+
+const theme = createTheme({
+  palette: {
+    mode: "dark",
+    background: {
+      default: "#030014",
+    },
+  },
+  typography: {
+    fontFamily: inter.style.fontFamily,
+  },
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
+      <Box>
+        <CssBaseline />
+
         <Box
           sx={{
             minHeight: "100vh",
@@ -40,5 +56,6 @@ export default function RootLayout({
 
           <Footer />
         </Box>
+      </Box>
   );
 }

@@ -1,6 +1,8 @@
+import { KcRole } from "../authentication/auth-enum.type";
 import { EventRole } from "../event/event-enum.type";
 import {
   ContactOptionType,
+  GenderType,
   InterestType,
   MaritalStatusType,
   PhoneNumberType,
@@ -12,15 +14,16 @@ import {
 export type User = {
   id: string;
   username: string;
-  type: UserType;
+  userType: UserType;
   status: UserStatusType;
-  customerInfo: CustomerInfo;
-  employeeInfo: EmployeeInfo;
+  customer: CustomerInfo;
+  employee: EmployeeInfo;
   personalInfo: PersonalInfo;
-  address: Address[];
+  addresses: Address[];
   contacts: Contact[];
   securityQuestions: SecurityQuestion[];
   roles: EventRole[];
+  role: KcRole;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -51,6 +54,7 @@ export type PersonalInfo = {
   birthDate: Date;
   maritalStatus: MaritalStatusType;
   phoneNumbers?: PhoneNumber[];
+  gender: GenderType;
 };
 
 export type Address = {
@@ -86,4 +90,16 @@ export type PhoneNumber = {
   number: string;
   type?: PhoneNumberType;
   isPrimary?: boolean;
+};
+
+export type InterestCategory =
+  | "banking"
+  | "technology"
+  | "realEstate"
+  | "insurance"
+  | "investments";
+
+export type UserInterest = {
+  id: string;
+  category: InterestCategory;
 };
