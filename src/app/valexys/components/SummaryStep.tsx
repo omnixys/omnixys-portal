@@ -1,6 +1,7 @@
 "use client";
 
 import { Card, Typography, Stack, Box, Divider } from "@mui/material";
+import { useEffect, useRef } from "react";
 
 export default function SummaryStep({
   activities,
@@ -9,6 +10,28 @@ export default function SummaryStep({
   activities: string[];
   wishes: string;
 }) {
+  const sentRef = useRef(false);
+
+  useEffect(() => {
+    if (sentRef.current) return;
+    sentRef.current = true;
+
+    const raw = localStorage.getItem("valenxys-state");
+    if (!raw) return;
+
+    const data = JSON.parse(raw);
+
+    fetch("/api/valentine", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).catch((ex) => {
+      console.warn({ ex });
+    });
+  }, []);
+
   return (
     <Card
       sx={{

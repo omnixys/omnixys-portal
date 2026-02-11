@@ -89,6 +89,7 @@
     "react-konva": "^19.2.1",
     "react-markdown": "^10.1.0",
     "recharts": "^3.7.0",
+    "resend": "^6.9.2",
     "valtio": "^2.3.0"
   },
   "devDependencies": {
